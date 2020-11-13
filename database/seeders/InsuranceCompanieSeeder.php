@@ -14,7 +14,7 @@ class InsuranceCompanieSeeder extends Seeder
      */
     public function run()
     {
-        InsuranceCompany::create([
+        InsuranceCompany::insert([
             ['name' => 'Лев Инс'],
             ['name' => 'Групама'],
             ['name' => 'ЗАД “ОЗК - Застраховане” АД'],
