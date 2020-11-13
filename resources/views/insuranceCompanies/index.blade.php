@@ -4,14 +4,12 @@
             Управление на списък със застрахователни компании
         </h2>
     </x-slot>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-  
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
     <h1></h1>
     <br>
-    <table id = "myTable" align="center" style="border:1px solid black;" class="display">
+    <table id="insuranceCompany" align="center" style="border:1px solid black;" class="display">
         <thead>
             <tr>
                 <th>№</th>
@@ -44,10 +42,11 @@
         </tbody>
     </table>
 
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
     <script>
         $(document).ready( function () {
-            $('#myTable').DataTable();
+            $('#insuranceCompany').DataTable();
         } );
     </script>
 </x-app-layout>
