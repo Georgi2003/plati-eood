@@ -15,7 +15,8 @@ class CreatePowersTable extends Migration
     {
         Schema::create('powers', function (Blueprint $table) {
             $table->id();
-            $table->integer('power');
+            $table->integer('kW');
+            $table->integer('horse_power');
         });
     }
 

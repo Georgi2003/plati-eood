@@ -21,17 +21,18 @@ class CreateCivilResponsibilityRequestsTable extends Migration
             $table->string('phone');
             $table->string('adress');
             $table->string('vehicle_type');
-            $table->integer('power');
+            $table->integer('kW');
+            $table->integer('horse_power');
             $table->integer('volume');
             $table->integer('year_production');
             $table->string('status');
             $table->integer('payments_count');
 
-            /*$table->unsignedBigInteger('insurance_company_id');
+            $table->unsignedBigInteger('insurance_company_id');
             $table->foreign('insurance_company_id')->references('id')->on('insurance_companies');
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');*/
+            $table->foreign('user_id')->references('id')->on('users');
             
             $table->timestamps();
         });

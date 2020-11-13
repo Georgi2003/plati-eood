@@ -16,9 +16,6 @@ class CreateVehicleTypesTable extends Migration
         Schema::create('vehicle_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-
-            $table->unsignedBigInteger('civil_responsibility_request_id');
-            $table->foreign('civil_responsibility_request_id')->references('id')->on('civil_responsibility_requests');
         });
     }
 

@@ -18,7 +18,7 @@ class CreateKaskoRequestsTable extends Migration
             $table->string('coupon_file');
             $table->string('name');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();;
             $table->string('status');
             $table->string('message');
             $table->timestamps();

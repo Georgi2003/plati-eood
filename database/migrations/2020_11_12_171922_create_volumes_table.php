@@ -15,7 +15,7 @@ class CreateVolumesTable extends Migration
     {
         Schema::create('volumes', function (Blueprint $table) {
             $table->id();
-            $table->string('volume');
+            $table->integer('value');
         });
     }
 
