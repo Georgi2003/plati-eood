@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
+use Response;
 
 class InsuranceCompanyController extends Controller
 {
@@ -39,7 +40,13 @@ class InsuranceCompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name'  => 'required'
+        ]);
+
+        $insuranceCompany = InsuranceCompany::create($data);
+
+        return Response::json($insuranceCompany);
     }
 
     /**
@@ -61,7 +68,9 @@ class InsuranceCompanyController extends Controller
      */
     public function edit(InsuranceCompany $insuranceCompany)
     {
-        //
+        return view('insuranceCompanies.edit', [
+            'insuranceCompany' => $insuranceCompany    
+        ]);
     }
 
     /**
@@ -73,7 +82,11 @@ class InsuranceCompanyController extends Controller
      */
     public function update(Request $request, InsuranceCompany $insuranceCompany)
     {
-        //
+        $insuranceCompany->name = $request['name'];
+        
+        $insuranceCompany->save();
+
+        return redirect('/insuranceCompanies')->with('success', 'Успешно обновихте застрахователната компания!');
     }
 
     /**
@@ -84,6 +97,8 @@ class InsuranceCompanyController extends Controller
      */
     public function destroy(InsuranceCompany $insuranceCompany)
     {
-        //
+        $insuranceCompany->delete();
+
+        return redirect('/insuranceCompanies')->with('success', 'Записът е изтрит!');
     }
 }

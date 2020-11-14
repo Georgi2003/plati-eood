@@ -4,11 +4,20 @@
             Управление на списък със застрахователни компании
         </h2>
     </x-slot>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
-    <h1></h1>
-    <br>
+    <div class="container">
+    <div style=" margin: 50px;">
+        <div class="d-flex bd-highlight mb-4">
+        <div class="p-2 w-100 bd-highlight"></div>
+
+        <div class="p-2 flex-shrink-0 bd-highlight">
+            <button class="btn btn-success" id="btn-add">
+                Добави
+            </button>
+        </div>
+    </div>
     <table id="insuranceCompany" align="center" style="border:1px solid black;" class="display">
         <thead>
             <tr>
@@ -19,7 +28,7 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody id="todos-list">
         @foreach($allInsuranceCompanies as $insuranceCompany)
             <tr>
                 <td>{{ $loop->iteration }}</td> 
@@ -28,7 +37,8 @@
                         <form method="post" action="{{ url('insuranceCompanies') }}/{{ $insuranceCompany->id }}">
                             @csrf
                             @method('DELETE')
-                            <button style = "text-decoration: none; color: black;" href = "">Изтрий
+                            <button style = "text-decoration: none; color: black;">
+                                Изтрий
                             </button>
                         </form>
                     </td>
@@ -41,12 +51,21 @@
         @endforeach
         </tbody>
     </table>
+    </div>
+    </div>
+
+    @include('insuranceCompanies.create')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
     <script>
         $(document).ready( function () {
             $('#insuranceCompany').DataTable();
-        } );
+        });
     </script>
+    <script src="{{ asset('js/insuranceCompanies/create.js') }}"></script>
+    <br>
 </x-app-layout>
