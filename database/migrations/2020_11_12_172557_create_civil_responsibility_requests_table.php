@@ -15,17 +15,17 @@ class CreateCivilResponsibilityRequestsTable extends Migration
     {
         Schema::create('civil_responsibility_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('registration_number');
-            $table->string('coupon_number');
+            $table->string('registration_number', 100);
+            $table->string('coupon_number', 100);
             $table->string('coupon_file');
-            $table->string('phone');
-            $table->string('adress');
-            $table->string('vehicle_type');
+            $table->string('phone', 20);
+            $table->string('adress', 100);
+            $table->string('vehicle_type', 100);
             $table->integer('kW');
             $table->integer('horse_power');
             $table->integer('volume');
             $table->integer('year_production');
-            $table->string('status');
+            $table->string('status', 50);
             $table->integer('payments_count');
 
             $table->unsignedBigInteger('insurance_company_id');

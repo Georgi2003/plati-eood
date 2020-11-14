@@ -15,8 +15,8 @@ class CreateRegistrationNumbersTable extends Migration
     {
         Schema::create('registration_numbers', function (Blueprint $table) {
             $table->id();
-            $table->string('city');
-            $table->string('registration_number');
+            $table->string('city', 100);
+            $table->string('registration_number', 100);
         });
     }
 

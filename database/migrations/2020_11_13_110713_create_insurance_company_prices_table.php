@@ -14,11 +14,12 @@ class CreateInsuranceCompanyPricesTable extends Migration
     public function up()
     {
         Schema::create('insurance_company_prices', function (Blueprint $table) {
-            $table->string('vehicle_type');
+            $table->id();
+            $table->string('vehicle_type', 100);
             $table->integer('kW');
             $table->integer('horse_power');
             $table->integer('volume');
-            $table->string('registration_number');
+            $table->string('registration_number', 100);
             $table->integer('year_production');
             $table->integer('payments_count');
 

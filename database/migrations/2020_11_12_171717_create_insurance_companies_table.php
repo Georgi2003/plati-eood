@@ -15,7 +15,7 @@ class CreateInsuranceCompaniesTable extends Migration
     {
         Schema::create('insurance_companies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 100);
         });
     }
 

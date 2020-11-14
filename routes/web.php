@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::resource('/insuranceCompanies', 'App\Http\Controllers\InsuranceCompanyController');
 
+Route::resource('/users', 'App\Http\Controllers\UserController');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

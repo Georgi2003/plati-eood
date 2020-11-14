@@ -16,10 +16,10 @@ class CreateKaskoRequestsTable extends Migration
         Schema::create('kasko_requests', function (Blueprint $table) {
             $table->id();
             $table->string('coupon_file');
-            $table->string('name');
-            $table->string('phone');
-            $table->string('email')->nullable();;
-            $table->string('status');
+            $table->string('name', 100);
+            $table->string('phone', 50);
+            $table->string('email', 50)->nullable();;
+            $table->string('status', 50);
             $table->string('message');
             $table->timestamps();
         });
