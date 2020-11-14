@@ -24,5 +24,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware([IsAdmin::class])->group(function () {
 	Route::resource('/insuranceCompanies', 'App\Http\Controllers\InsuranceCompanyController');
+	Route::resource('/kaskoRequests', 'App\Http\Controllers\kaskoRequestController');
 	Route::resource('/users', 'App\Http\Controllers\UserController');
 });

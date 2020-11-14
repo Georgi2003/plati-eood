@@ -18,9 +18,9 @@ class CreateKaskoRequestsTable extends Migration
             $table->string('coupon_file');
             $table->string('name', 100);
             $table->string('phone', 50);
-            $table->string('email', 50)->nullable();;
+            $table->string('email', 50)->default('Няма');
             $table->string('status', 50);
-            $table->string('message');
+            $table->Text('message')->default('Няма бележи');
             $table->timestamps();
         });
     }
