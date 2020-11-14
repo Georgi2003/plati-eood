@@ -15,14 +15,15 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Начало') }}
                     </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{ url('insuranceCompanies') }}">
-                        Застрахователни компании
-                    </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{ url('users') }}">
-                        Админ
-                    </x-jet-nav-link>
+                    @if(\Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
+                        <x-jet-nav-link href="{{ url('insuranceCompanies') }}">
+                            Застрахователни компании
+                        </x-jet-nav-link>
+                    
+                        <x-jet-nav-link href="{{ url('users') }}">
+                            Админ
+                        </x-jet-nav-link>
+                    @endif
                 </div>
             </div>
 

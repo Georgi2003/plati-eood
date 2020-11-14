@@ -18,7 +18,10 @@
                 <th>№</th>
                 <th>Потребител</th>
                 <th>Роля</th>
-                <th>Изтрии</th>
+                @if(Auth::user()->isSuperAdmin())
+                    <th>Промени роля</th>
+                    <th>Изтрии</th>
+                @endif
             </tr>
         </thead>
 
@@ -28,20 +31,42 @@
                 <td>{{ $loop->iteration }}</td> 
                 <td>{{ $users->name }}</td>
                 <td>{{ $users->role }}</td>
+
+                @if(Auth::user()->isSuperAdmin())
                     <td>
                         @if($users->id > 1)
-                        <form method="post" action="{{ url('users') }}/{{ $users->id }}">
-                            @csrf
-                            @method('DELETE')
-                            <button style = "text-decoration: none; color: black;">
-                                Изтрий
-                            </button>
-                        </form>
+                            <form method="post" action="{{ url('users') }}/{{ $users->id }}">
+                                @csrf
+                                @method('PUT')
+                                <select name="role" id="cars">
+                                    <option value="{{ $users->role }}">{{ $users->role }}</option>
+                                    <option value="admin">admin</option>
+                                    <option value="user">user</option>
+                                </select>
+                                <input type="submit" value="✓">
+                            </form>
                         @endif
+
                         @if($users->id == 1)
                             -
-                        @endif
+                        @endif 
                     </td>
+                    <td>
+                        @if($users->id > 1)
+                            <form method="post" action="{{ url('users') }}/{{ $users->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button style = "text-decoration: none; color: black;">
+                                    Изтрий
+                                </button>
+                            </form>
+                        @endif
+
+                        @if($users->id == 1)
+                            -
+                        @endif 
+                    </td>
+                @endif
             </tr>
         @endforeach
         </tbody>

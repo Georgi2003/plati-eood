@@ -58,4 +58,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role == config('consts.USER_ROLE_ADMIN');
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->role == config('consts.USER_ROLE_SUPER_ADMIN');
+    }
+
+    public function isUser()
+    {
+        return $this->role == config('consts.USER_ROLE_USER');
+    }
 }

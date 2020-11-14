@@ -73,7 +73,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->role = $request['role'];
+        
+        $user->save();
+
+        return redirect('/users')->with('success', 'Ролята успешно е променена!');
     }
 
     /**
@@ -84,6 +88,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect('/users')->with('success', 'Записът е изтрит!');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/insuranceCompanies', 'App\Http\Controllers\InsuranceCompanyController');
-
-Route::resource('/users', 'App\Http\Controllers\UserController');
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware([IsAdmin::class])->group(function () {
+	Route::resource('/insuranceCompanies', 'App\Http\Controllers\InsuranceCompanyController');
+	Route::resource('/users', 'App\Http\Controllers\UserController');
+});
