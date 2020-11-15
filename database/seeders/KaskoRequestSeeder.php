@@ -18,7 +18,6 @@ class KaskoRequestSeeder extends Seeder
             'coupon_file' => '-',
 	    	'name' => 'Язъ Мехмед',
 	    	'phone' => '088542222',
-	    	'status' => 'Нова заявка',
         ]);
     }
 }

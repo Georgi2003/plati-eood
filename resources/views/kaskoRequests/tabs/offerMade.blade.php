@@ -7,7 +7,6 @@
             <th>Телефон</th>
             <th>Email</th>
             <th>Статус</th>
-            <th>Промени статуса</th>
             <th>Бележка</th>
             <th>Запази</th>
             <th>Дата</th>
@@ -20,11 +19,13 @@
         
         <tr>
             <td>{{ $loop->iteration }}</td> 
-            <td>{{ $kaskoRequests->coupon_file }}</td>
+            <td>
+                <img id="myImg" style="width: 50px; height:50px" src="{{ $kaskoRequests->coupon_file }}">
+            </td>
             <td>{{ $kaskoRequests->name }}</td>
             <td>{{ $kaskoRequests->phone }}</td>
             <td>{{ $kaskoRequests->email }}</td>
-            <td>{{ $kaskoRequests->status }}</td>
+            
             <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequests->id }}">
                 @csrf
                 @method('PUT')

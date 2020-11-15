@@ -1,4 +1,4 @@
-<table id="archiveRquest" align="center" style="border:1px solid black;" class="display">
+<table id="dealMadeRquest" align="center" style="border:1px solid black;" class="display">
     <thead>
         <tr>
             <th>№</th>
@@ -7,6 +7,7 @@
             <th>Телефон</th>
             <th>Email</th>
             <th>Статус</th>
+            <th>Промени статуса</th>
             <th>Бележка</th>
             <th>Запази</th>
             <th>Дата</th>
@@ -15,7 +16,8 @@
 
     <tbody id="todos-list">
         @foreach($allKaskoRequests as $kaskoRequests)
-        @if($kaskoRequests->status == "Архивирана")    
+        @if($kaskoRequests->status == "Сключена сделка")
+        
         <tr>
             <td>{{ $loop->iteration }}</td> 
             <td>
@@ -24,16 +26,16 @@
             <td>{{ $kaskoRequests->name }}</td>
             <td>{{ $kaskoRequests->phone }}</td>
             <td>{{ $kaskoRequests->email }}</td>
-            
+            <td>{{ $kaskoRequests->status }}</td>
             <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequests->id }}">
+                @csrf
+                @method('PUT')
                 <td>
-                    @csrf
-                    @method('PUT')
                     <select name="status">
                         <option value="{{ $kaskoRequests->status }}">{{ $kaskoRequests->status }}</option>
                         <option value="Нова заявка">Нова заявка</option>
                         <option value="Направена оферта">Направена оферта</option>
-                        <option value="Сключена сделка">Сключена сделка</option>
+                        <option value="Архивирана">Архивирана</option>
                     </select>
                 </td>
                 <td>                
@@ -42,7 +44,7 @@
                 <td>
                     <input type="submit" value="Запази">
                 </td>
-            </form> 
+            </form>
             <td>{{ $kaskoRequests->message }}</td>
             <td>{{ $kaskoRequests->created_at }}</td>
         </tr>

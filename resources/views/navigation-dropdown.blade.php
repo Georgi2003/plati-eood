@@ -15,6 +15,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Начало') }}
                     </x-jet-nav-link>
+                    
+                    <x-jet-nav-link href="{{ url('CivilResponsibilityRequests') }}">
+                        Гражданска отговорност
+                    </x-jet-nav-link>
+
                     @if(\Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                         <x-jet-nav-link href="{{ url('kaskoRequests') }}">
                             Каско
@@ -28,6 +33,8 @@
                             Админ
                         </x-jet-nav-link>
                     @endif
+
+                    
                 </div>
             </div>
 
@@ -134,6 +141,11 @@
             {{ __('Начало') }}
         </x-jet-responsive-nav-link>
 
+        <x-jet-responsive-nav-link href="{{ url('CivilResponsibilityRequests') }}">
+            Гражданска отговорност
+        </x-jet-responsive-nav-link>
+        
+        @if(\Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
         <x-jet-responsive-nav-link href="{{ url('kaskoRequests') }}">
             Каско
         </x-jet-responsive-nav-link>
@@ -145,6 +157,7 @@
         <x-jet-responsive-nav-link href="{{ url('users') }}">
             Админ
         </x-jet-responsive-nav-link>
+        @endif       
     </div>
 
     <!-- Responsive Settings Options -->

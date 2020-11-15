@@ -15,7 +15,6 @@
         <link href = "{{ asset('img/avatar.jpg') }}" rel = "shortcut icon" type="image/x-icon">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/img.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/message.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

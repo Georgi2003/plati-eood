@@ -25,7 +25,7 @@ class CreateCivilResponsibilityRequestsTable extends Migration
             $table->integer('horse_power');
             $table->integer('volume');
             $table->integer('year_production');
-            $table->string('status', 50);
+            $table->string('status', 50)->default('Неназначени');
             $table->integer('payments_count');
 
             $table->unsignedBigInteger('insurance_company_id');

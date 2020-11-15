@@ -19,7 +19,7 @@ class CreateKaskoRequestsTable extends Migration
             $table->string('name', 100);
             $table->string('phone', 50);
             $table->string('email', 50)->default('Няма');
-            $table->string('status', 50);
+            $table->string('status', 50)->default('Нова заявка');
             $table->Text('message')->default('Няма бележи');
             $table->timestamps();
         });

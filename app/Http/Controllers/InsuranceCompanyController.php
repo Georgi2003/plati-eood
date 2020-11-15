@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
+use App\Http\Requests\InsuranceCompanyPost;
 use Response;
 
 class InsuranceCompanyController extends Controller
@@ -35,10 +36,10 @@ class InsuranceCompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\InsuranceCompanyPost  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InsuranceCompanyPost $request)
     {
         $data = $request->validate([
             'name'  => 'required'
@@ -76,11 +77,11 @@ class InsuranceCompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\InsuranceCompanyPost  $request
      * @param  \App\Models\InsuranceCompany  $insuranceCompany
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InsuranceCompany $insuranceCompany)
+    public function update(InsuranceCompanyPost $request, InsuranceCompany $insuranceCompany)
     {
         $insuranceCompany->name = $request['name'];
         

@@ -1,4 +1,4 @@
-<table id="archiveRquest" align="center" style="border:1px solid black;" class="display">
+<table id="offerMadeRquest" align="center" style="border:1px solid black;" class="display">
     <thead>
         <tr>
             <th>№</th>
@@ -7,6 +7,7 @@
             <th>Телефон</th>
             <th>Email</th>
             <th>Статус</th>
+            <th>Промени статуса</th>
             <th>Бележка</th>
             <th>Запази</th>
             <th>Дата</th>
@@ -15,7 +16,8 @@
 
     <tbody id="todos-list">
         @foreach($allKaskoRequests as $kaskoRequests)
-        @if($kaskoRequests->status == "Архивирана")    
+        @if($kaskoRequests->status == "Направена оферта")
+        
         <tr>
             <td>{{ $loop->iteration }}</td> 
             <td>
@@ -24,18 +26,17 @@
             <td>{{ $kaskoRequests->name }}</td>
             <td>{{ $kaskoRequests->phone }}</td>
             <td>{{ $kaskoRequests->email }}</td>
-            
+            <td>{{ $kaskoRequests->status }}</td>
             <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequests->id }}">
-                <td>
-                    @csrf
-                    @method('PUT')
+                @csrf
+                @method('PUT')
+                    <td>
                     <select name="status">
                         <option value="{{ $kaskoRequests->status }}">{{ $kaskoRequests->status }}</option>
                         <option value="Нова заявка">Нова заявка</option>
-                        <option value="Направена оферта">Направена оферта</option>
                         <option value="Сключена сделка">Сключена сделка</option>
+                        <option value="Архивирана">Архивирана</option>
                     </select>
-                </td>
                 <td>                
                     <textarea name="message" rows="3" cols="20">{{ $kaskoRequests->message }}</textarea>
                 </td>
@@ -43,6 +44,7 @@
                     <input type="submit" value="Запази">
                 </td>
             </form> 
+            </td>
             <td>{{ $kaskoRequests->message }}</td>
             <td>{{ $kaskoRequests->created_at }}</td>
         </tr>

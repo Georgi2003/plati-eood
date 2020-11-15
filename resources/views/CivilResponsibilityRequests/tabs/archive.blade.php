@@ -7,6 +7,7 @@
             <th>Телефон</th>
             <th>Email</th>
             <th>Статус</th>
+            <th>Промени статуса</th>
             <th>Бележка</th>
             <th>Запази</th>
             <th>Дата</th>
@@ -24,7 +25,7 @@
             <td>{{ $kaskoRequests->name }}</td>
             <td>{{ $kaskoRequests->phone }}</td>
             <td>{{ $kaskoRequests->email }}</td>
-            
+            <td>{{ $kaskoRequests->status }}</td>
             <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequests->id }}">
                 <td>
                     @csrf

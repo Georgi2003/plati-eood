@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\CivilResponsibilityRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserPost;
 
-class UserController extends Controller
+class CivilResponsibilityRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        
-        return view('users.index', [
-            'allUsers' => $users     
+        $CivilResponsibilityRequests = CivilResponsibilityRequest::all();
+
+        return view('CivilResponsibilityRequests.index', [
+            'allCivilResponsibilityRequests' => $CivilResponsibilityRequests
         ]);
     }
 
@@ -46,10 +45,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CivilResponsibilityRequest  $civilResponsibilityRequest
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(CivilResponsibilityRequest $civilResponsibilityRequest)
     {
         //
     }
@@ -57,10 +56,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CivilResponsibilityRequest  $civilResponsibilityRequest
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(CivilResponsibilityRequest $civilResponsibilityRequest)
     {
         //
     }
@@ -68,29 +67,23 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\UserPost  $request
-     * @param  \App\Models\User  $user
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\CivilResponsibilityRequest  $civilResponsibilityRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(UserPost $request, User $user)
+    public function update(Request $request, CivilResponsibilityRequest $civilResponsibilityRequest)
     {
-        $user->role = $request['role'];
-        
-        $user->save();
-
-        return redirect('/users')->with('success', 'Ролята успешно е променена!');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CivilResponsibilityRequest  $civilResponsibilityRequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(CivilResponsibilityRequest $civilResponsibilityRequest)
     {
-        $user->delete();
-
-        return redirect('/users')->with('success', 'Записът е изтрит!');
+        //
     }
 }

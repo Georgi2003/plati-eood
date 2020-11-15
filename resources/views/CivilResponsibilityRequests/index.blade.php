@@ -32,20 +32,17 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="new" class="container tab-pane active"><br>
-            <h3>Нови заявки</h3>
-            @include('kaskoRequests.tabs.new')
+            <h3>Неназначени</h3>
+            @include('CivilResponsibilityRequests.tabs.unassigned')
         </div>
         <div id="offerMade" class="container tab-pane fade"><br>
             <h3>Направена оферта</h3>
-            @include('kaskoRequests.tabs.offerMade')
         </div>
         <div id="dealMade" class="container tab-pane fade"><br>
           <h3>Сключена сделка</h3>
-          @include('kaskoRequests.tabs.dealMade')
       </div>
       <div id="archive" class="container tab-pane fade"><br>
           <h3>Архивирани</h3>
-          @include('kaskoRequests.tabs.archive')
       </div>
   </div>
 </div>

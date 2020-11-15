@@ -25,7 +25,6 @@ class CivilResponsibilityRequestSeeder extends Seeder
 			'horse_power' => 3,
 			'volume' => 1000,
 			'year_production' => 2020,
-			'status' => "Нова поръчка",
 			'payments_count' => 2,
 			'insurance_company_id' => 1,
 			'user_id' => 1,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KaskoRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\KaskoRequestPost;
 
 class KaskoRequestController extends Controller
 {
@@ -67,11 +68,11 @@ class KaskoRequestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\KaskoRequestPost  $request
      * @param  \App\Models\KaskoRequest  $kaskoRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KaskoRequest $kaskoRequest)
+    public function update(KaskoRequestPost $request, KaskoRequest $kaskoRequest)
     {
         $kaskoRequest->status = $request['status'];
         $kaskoRequest->message = $request['message'];
