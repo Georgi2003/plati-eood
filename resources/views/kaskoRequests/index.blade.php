@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-  
+    
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
     <div class="container mt-3">
@@ -26,28 +26,35 @@
             <a class="nav-link" data-toggle="tab" href="#archive">Архив</a>
         </li>
     </ul>
-
+    
     <!-- Tab panes -->
     <div class="tab-content">
-    <div id="new" class="container tab-pane active"><br>
-        <h3>Нови заявки</h3>
-        @include('kaskoRequests.tabs.new')
-    </div>
-    <div id="offerMade" class="container tab-pane fade"><br>
-        <h3>Направена оферта</h3>
-        @include('kaskoRequests.tabs.offerMade')
-    </div>
-    <div id="dealMade" class="container tab-pane fade"><br>
-      <h3>Сключена сделка</h3>
-      @include('kaskoRequests.tabs.dealMade')
-    </div>
-    <div id="archive" class="container tab-pane fade"><br>
-      <h3>Архивирани</h3>
-      @include('kaskoRequests.tabs.archive')
-    </div>
-    
+        <div id="new" class="container tab-pane active"><br>
+            <h3>Нови заявки</h3>
+            @include('kaskoRequests.tabs.new')
+        </div>
+        <div id="offerMade" class="container tab-pane fade"><br>
+            <h3>Направена оферта</h3>
+            @include('kaskoRequests.tabs.offerMade')
+        </div>
+        <div id="dealMade" class="container tab-pane fade"><br>
+          <h3>Сключена сделка</h3>
+          @include('kaskoRequests.tabs.dealMade')
+      </div>
+      <div id="archive" class="container tab-pane fade"><br>
+          <h3>Архивирани</h3>
+          @include('kaskoRequests.tabs.archive')
+      </div>
+  </div>
 </div>
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
 </div>
+
+<script src="{{ asset('js/img.js') }}"></script>
 <script>
     $(document).ready( function () {
         $('#newRquest').DataTable();

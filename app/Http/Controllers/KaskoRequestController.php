@@ -74,10 +74,11 @@ class KaskoRequestController extends Controller
     public function update(Request $request, KaskoRequest $kaskoRequest)
     {
         $kaskoRequest->status = $request['status'];
+        $kaskoRequest->message = $request['message'];
         
         $kaskoRequest->save();
 
-        return redirect('/kaskoRequests')->with('success', 'Успешно променихте статуса!');
+        return redirect('/kaskoRequests')->with('success', 'Промените са запазени!');
     }
 
     /**

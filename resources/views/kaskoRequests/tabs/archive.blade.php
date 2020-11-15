@@ -9,6 +9,7 @@
             <th>Статус</th>
             <th>Промени статуса</th>
             <th>Бележка</th>
+            <th>Запази</th>
             <th>Дата</th>
         </tr>
     </thead>
@@ -23,8 +24,8 @@
             <td>{{ $kaskoRequests->phone }}</td>
             <td>{{ $kaskoRequests->email }}</td>
             <td>{{ $kaskoRequests->status }}</td>
-            <td>
-                <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequests->id }}">
+            <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequests->id }}">
+                <td>
                     @csrf
                     @method('PUT')
                     <select name="status">
@@ -33,9 +34,14 @@
                         <option value="Направена оферта">Направена оферта</option>
                         <option value="Сключена сделка">Сключена сделка</option>
                     </select>
-                    <input type="submit" value="✓">
-                </form> 
-            </td>
+                </td>
+                <td>                
+                    <textarea name="message" rows="3" cols="20">{{ $kaskoRequests->message }}</textarea>
+                </td>
+                <td>
+                    <input type="submit" value="Запази">
+                </td>
+            </form> 
             <td>{{ $kaskoRequests->message }}</td>
             <td>{{ $kaskoRequests->created_at }}</td>
         </tr>
