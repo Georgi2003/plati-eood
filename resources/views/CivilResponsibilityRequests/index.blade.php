@@ -1,15 +1,18 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Лесно каско
-        </h2>
-    </x-slot>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <x-slot name="header">
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+      Управление на списък със застрахователни компании
+    </h2>
+  </x-slot>
+  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/img.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/img.css') }}">
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
-    
+
     <div class="container mt-3">
       <h2>Заявки за Каско</h2>
       <br>
@@ -32,7 +35,7 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="new" class="container tab-pane active"><br>
-            <h3>Неназначени</h3>
+            <h3>Нови заявки</h3>
             @include('CivilResponsibilityRequests.tabs.unassigned')
         </div>
         <div id="offerMade" class="container tab-pane fade"><br>
@@ -54,9 +57,16 @@
 </div>
 
 <script src="{{ asset('js/img.js') }}"></script>
-<script>
+
+  <script>
     $(document).ready( function () {
-        $('#newRquest').DataTable();
+      $('#newRquest').DataTable({
+        rowReorder: {
+          selector: 'td:nth-child(2)'
+        },
+        responsive: true
+      });
     });
-</script>
+  </script>
+  <br>
 </x-app-layout>

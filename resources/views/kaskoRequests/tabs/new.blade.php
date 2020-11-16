@@ -1,4 +1,4 @@
-<table id="newRquest" align="center" style="border:1px solid black;" class="display">
+<table id="newRquest" align="center" style="border:1px;" class="display">
     <thead>
         <tr>
             <th>№</th>

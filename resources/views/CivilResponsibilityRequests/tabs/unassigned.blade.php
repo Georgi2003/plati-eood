@@ -2,47 +2,62 @@
     <thead>
         <tr>
             <th>№</th>
-            <th>Телефон</th>
             <th>Статус</th>
             <th>Бележка</th>
-
-            <th>Запази</th>
-            <th>Талон</th>
             <th>Дата</th>
+            <th>Назначи</th>
+
+            <th>Телефон</th>
+            <th>Адрес</th>
+            <th>Талон</th>
+            <th>Снимка на талона</th>
+            <th>Регистрационен номер</th>
+            <th>Вид МПС</th>
+            <th>Мощност</th>
+
+            <th>Обем на двигателя</th>
+            <th>Година на производство</th>
+            <th>Брой вноски</th>
+            <th>Последна компания</th>
         </tr>
     </thead>
 
     <tbody id="todos-list">
-        @foreach($allCivilResponsibilityRequests as $CivilResponsibilityRequests)
-        @if($CivilResponsibilityRequests->status == "Неназначени")
-        
+        @foreach($allCivilResponsibilityRequests as $civilResponsibilityRequests)
+        @if($civilResponsibilityRequests->status == "Неназначени")
         <tr>
             <td>{{ $loop->iteration }}</td> 
-            
-            <td>{{ $CivilResponsibilityRequests->phone }}</td>
-
-            <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $CivilResponsibilityRequests->id }}">
-                @csrf
-                @method('PUT')
-                <td>
-                    <select name="status">
-                        <option value="{{ $CivilResponsibilityRequests->status }}">{{ $CivilResponsibilityRequests->status }}</option>
-                        <option value="Направена оферта">Направена оферта</option>
-                        <option value="Сключена сделка">Сключена сделка</option>
-                        <option value="Архивирана">Архивирана</option>
-                    </select>
-                </td>            
-                <td>                
-                    <textarea name="message" rows="3" cols="20">{{ $CivilResponsibilityRequests->message }}</textarea>
-                </td>
-                <td>
-                    <input type="submit" value="Запази">
-                </td>
-            </form>
+            <td>{{ $civilResponsibilityRequests->phone }}</td>
+            <td>{{ $civilResponsibilityRequests->status }}</td>
             <td>
-                <img id="myImg" style="width: 50px; height:50px" src="{{ $CivilResponsibilityRequests->coupon_file }}">
+                <form method="post" action="{{ url('civilResponsibilityRequests') }}/{{ $civilResponsibilityRequests->id }}">
+                    @csrf
+                    @method('PUT')
+                    
+                    <select name="role">
+                        @foreach($allUsers as $users)
+                        <option value="{{ $users->name }}">{{ $users->name }}</option>
+                        @endforeach
+                    </select>
+                    
+                    <input type="submit" value="Запази">
+                </form>              
             </td>
-            <td>{{ $CivilResponsibilityRequests->created_at }}</td>
+            <td>{{ $civilResponsibilityRequests->created_at }}</td>
+
+            <td>{{ $civilResponsibilityRequests->phone }}</td>
+            <td>{{ $civilResponsibilityRequests->adress }}</td>
+            <td>{{ $civilResponsibilityRequests->coupon_number }}</td>
+            <td>{{ $civilResponsibilityRequests->coupon_file }}</td>
+            <td>{{ $civilResponsibilityRequests->registration_number }}</td>
+            
+            <td>{{ $civilResponsibilityRequests->vehicle_type }}</td>
+            <td>До {{ $civilResponsibilityRequests->kW }}kW ({{ $civilResponsibilityRequests->horse_power }}к. с.)</td>
+            
+            <td>До {{ $civilResponsibilityRequests->volume }}cm³ вкл.</td>
+            <td>{{ $civilResponsibilityRequests->year_production }}</td>
+            <td>{{ $civilResponsibilityRequests->payments_count }}</td>
+            <td>{{ $civilResponsibilityRequests->insuranceCompany->name }}</td>
         </tr>
         @endif
         @endforeach
