@@ -74,9 +74,14 @@ class CivilResponsibilityRequestController extends Controller
      * @param  \App\Models\CivilResponsibilityRequest  $civilResponsibilityRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CivilResponsibilityRequest $civilResponsibilityRequest)
+    public function update(Request $request, $id)
     {
-        //
+        $civilResponsibilityRequest = CivilResponsibilityRequest::find($id);
+        $civilResponsibilityRequest->user_id = $request['user_id'];
+        
+        $civilResponsibilityRequest->save();
+
+        return redirect('/CivilResponsibilityRequests')->with('success', 'Заявката е назначена!');
     }
 
     /**

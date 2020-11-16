@@ -28,4 +28,9 @@ class CivilResponsibilityRequest extends Model
     {
     	return $this->belongsTo('App\Models\InsuranceCompany');
     }
+
+    public function user()
+    {
+    	return $this->belongsTo('App\Models\User');
+    }
 }

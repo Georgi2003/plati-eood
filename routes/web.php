@@ -29,3 +29,5 @@ Route::middleware([IsAdmin::class])->group(function () {
 });
 Route::resource('/CivilResponsibilityRequests', 'App\Http\Controllers\CivilResponsibilityRequestController');
 
+Route::resource('/messages', 'App\Http\Controllers\MessageController');
+

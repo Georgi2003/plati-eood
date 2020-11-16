@@ -1,9 +1,9 @@
-<table id="newRquest" align="center" style="border:1px solid black;" class="display">
+<table id="newRquest" align="center" style="border:1px;" class="display">
     <thead>
         <tr>
             <th>№</th>
             <th>Статус</th>
-            <th>Бележка</th>
+            <th>Бележки</th>
             <th>Дата</th>
             <th>Назначи</th>
 
@@ -27,25 +27,29 @@
         @if($civilResponsibilityRequests->status == "Неназначени")
         <tr>
             <td>{{ $loop->iteration }}</td> 
-            <td>{{ $civilResponsibilityRequests->phone }}</td>
             <td>{{ $civilResponsibilityRequests->status }}</td>
             <td>
-                <form method="post" action="{{ url('civilResponsibilityRequests') }}/{{ $civilResponsibilityRequests->id }}">
+                <button>
+                    <a style = "text-decoration: none; color: black;" href = "{{ url('messages') }}">Прочети</a>
+                </button>
+            </td>
+            <td>{{ $civilResponsibilityRequests->created_at }}</td>
+            <td>
+                <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $civilResponsibilityRequests->id }}">
                     @csrf
                     @method('PUT')
-                    
-                    <select name="role">
+                    <select name="user_id">
+                        <option value="0">{{ $civilResponsibilityRequests->user->name }}</option>
                         @foreach($allUsers as $users)
-                        <option value="{{ $users->name }}">{{ $users->name }}</option>
+                            <option value="{{ $users->id }}">{{ $users->name }}</option>
                         @endforeach
                     </select>
                     
                     <input type="submit" value="Запази">
                 </form>              
             </td>
-            <td>{{ $civilResponsibilityRequests->created_at }}</td>
-
             <td>{{ $civilResponsibilityRequests->phone }}</td>
+            
             <td>{{ $civilResponsibilityRequests->adress }}</td>
             <td>{{ $civilResponsibilityRequests->coupon_number }}</td>
             <td>{{ $civilResponsibilityRequests->coupon_file }}</td>
