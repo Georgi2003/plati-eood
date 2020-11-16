@@ -5,67 +5,60 @@
         </h2>
     </x-slot>
     
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 
     <div class="container">
-    <div style=" margin: 50px;">
-        <div class="d-flex bd-highlight mb-4">
-        <div class="p-2 w-100 bd-highlight"></div>
+        <div style=" margin: 50px;">
+            <div class="d-flex bd-highlight mb-4">
+                <div class="p-2 w-100 bd-highlight"></div>
+            </div>
 
-        <div class="p-2 flex-shrink-0 bd-highlight">
-            <button class="btn btn-success" id="btn-add">
-                Добави
-            </button>
-        </div>
-    </div>
-    <table id="insuranceCompany" align="center" style="border:1px solid black;" class="display">
-        <thead>
-            <tr>
-                <th>№</th>
-                <th>Застрахователна компания</th>
-                <th>Изтрии</th>
-                <th>Актуализирай</th>
-            </tr>
-        </thead>
+            <table id="example" class="display nowrap" style="border:1px">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Застрахователна компания</th>
+                        <th>Изтрии</th>
+                        <th>Актуализирай</th>
+                    </tr>
+                </thead>
 
-        <tbody id="todos-list">
-        @foreach($allInsuranceCompanies as $insuranceCompany)
-            <tr>
-                <td>{{ $loop->iteration }}</td> 
-                <td>{{ $insuranceCompany->name }}</td>
-                    <td>
-                        <form method="post" action="{{ url('insuranceCompanies') }}/{{ $insuranceCompany->id }}">
-                            @csrf
-                            @method('DELETE')
-                            <button style = "text-decoration: none; color: black;">
-                                Изтрий
+                <tbody id="todos-list">
+                    @foreach($allInsuranceCompanies as $insuranceCompany)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td> 
+                        <td>{{ $insuranceCompany->name }}</td>
+                        <td>
+                            <form method="post" action="{{ url('insuranceCompanies') }}/{{ $insuranceCompany->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button style = "text-decoration: none; color: black;">
+                                    Изтрий
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <button>
+                                <a style = "text-decoration: none; color: black;" href = "{{ url('insuranceCompanies') }}/{{ $insuranceCompany->id }}/edit">Актуализирай</a>
                             </button>
-                        </form>
-                    </td>
-                    <td>
-                        <button>
-                            <a style = "text-decoration: none; color: black;" href = "{{ url('insuranceCompanies') }}/{{ $insuranceCompany->id }}/edit">Актуализирай</a>
-                        </button>
-                    </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
     </div>
-    </div>
-
-    @include('insuranceCompanies.create')
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
     <script>
         $(document).ready( function () {
-            $('#insuranceCompany').DataTable();
+            $('#example').DataTable({
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true
+            });
         });
     </script>
-    <script src="{{ asset('js/insuranceCompanies/create.js') }}"></script>
     <br>
 </x-app-layout>

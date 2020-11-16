@@ -2,16 +2,12 @@
     <thead>
         <tr>
             <th>№</th>
-            <th>Талон</th>
-            <th>Рег. номер</th>
             <th>Телефон</th>
-            <th>Адрес</th>
             <th>Статус</th>
-            <th>Вид превозно средство</th>
-            <th>Обем на двигателя</th>
-            <th>Година на производство</th>
-            <th>Брой вноски</th>
-            <th>Последна застр. компания</th>
+            <th>Бележка</th>
+
+            <th>Запази</th>
+            <th>Талон</th>
             <th>Дата</th>
         </tr>
     </thead>
@@ -22,13 +18,8 @@
         
         <tr>
             <td>{{ $loop->iteration }}</td> 
-            <td>
-                <img id="myImg" style="width: 50px; height:50px" src="{{ $CivilResponsibilityRequests->coupon_file }}">
-            </td>
-            <td>{{ $CivilResponsibilityRequests->name }}</td>
+            
             <td>{{ $CivilResponsibilityRequests->phone }}</td>
-            <td>{{ $CivilResponsibilityRequests->email }}</td>
-            <td>{{ $CivilResponsibilityRequests->status }}</td>
 
             <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $CivilResponsibilityRequests->id }}">
                 @csrf
@@ -48,6 +39,9 @@
                     <input type="submit" value="Запази">
                 </td>
             </form>
+            <td>
+                <img id="myImg" style="width: 50px; height:50px" src="{{ $CivilResponsibilityRequests->coupon_file }}">
+            </td>
             <td>{{ $CivilResponsibilityRequests->created_at }}</td>
         </tr>
         @endif

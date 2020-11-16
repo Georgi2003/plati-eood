@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/img.css') }}">
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
-
+    
     <div class="container mt-3">
       <h2>Заявки за Каско</h2>
       <br>
@@ -57,9 +57,6 @@
 <script>
     $(document).ready( function () {
         $('#newRquest').DataTable();
-        $('#offerMadeRquest').DataTable();
-        $('#dealMadeRquest').DataTable();
-        $('#archiveRquest').DataTable();
     });
 </script>
 </x-app-layout>

@@ -44,7 +44,6 @@
                 </td>
             </form> 
             </td>
-            <td>{{ $kaskoRequests->message }}</td>
             <td>{{ $kaskoRequests->created_at }}</td>
         </tr>
         @endif

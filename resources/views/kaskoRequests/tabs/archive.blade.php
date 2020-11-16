@@ -43,7 +43,6 @@
                     <input type="submit" value="Запази">
                 </td>
             </form> 
-            <td>{{ $kaskoRequests->message }}</td>
             <td>{{ $kaskoRequests->created_at }}</td>
         </tr>
         @endif
