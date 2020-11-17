@@ -1,12 +1,13 @@
-<table id="newRquest" align="center" style="border:1px;" class="display">
+<table id="unassignedRquest" align="center" style="border:1px;" class="display">
     <thead>
         <tr>
             <th>№</th>
             <th>Статус</th>
+            <th>Назначи</th>
+            <th>Запази</th>
             <th>Бележки</th>
             <th>Дата</th>
-            <th>Назначи</th>
-
+            
             <th>Телефон</th>
             <th>Адрес</th>
             <th>Талон</th>
@@ -27,25 +28,37 @@
         @if($civilResponsibilityRequests->status == "Неназначени")
         <tr>
             <td>{{ $loop->iteration }}</td> 
-            <td>{{ $civilResponsibilityRequests->status }}</td>
-            <td>
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Виж</button>
-            </td>
-            <td>{{ $civilResponsibilityRequests->created_at }}</td>
-            <td>
-                <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $civilResponsibilityRequests->id }}">
-                    @csrf
-                    @method('PUT')
+            <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $civilResponsibilityRequests->id }}">
+                @csrf
+                @method('PUT')
+                <td>
+                    <select name="status">
+                        <option value="{{ $civilResponsibilityRequests->status }}">{{ $civilResponsibilityRequests->status }}</option>
+                        <option value="Обработени">Обработени</option>
+                        <option value="Завършени">Завършени</option>
+                        <option value="Архивирани">Архивирани</option>
+                        <option value="Всички">Всички</option>
+                    </select>
+                </td> 
+                <td>
                     <select name="user_id">
-                        <option value="0">{{ $civilResponsibilityRequests->user->name }}</option>
+                        <option value="{{ $civilResponsibilityRequests->user_id }}">{{ $civilResponsibilityRequests->user->name }}</option>
                         @foreach($allUsers as $users)
                             <option value="{{ $users->id }}">{{ $users->name }}</option>
                         @endforeach
                     </select>
-                    
+                </td>
+                <td>    
                     <input type="submit" value="Запази">
-                </form>              
+                </td>
+                </form>     
+            <td>
+                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                    Виж
+                </button>
             </td>
+            <td>{{ $civilResponsibilityRequests->created_at }}</td>
+            
             <td>{{ $civilResponsibilityRequests->phone }}</td>
             
             <td>{{ $civilResponsibilityRequests->adress }}</td>
@@ -64,7 +77,5 @@
         @endif
         @endforeach
     </tbody>
-
-    @include('CivilResponsibilityRequests.messages.index')
-    
-</table>
+</table> 
+@include('CivilResponsibilityRequests.messages.index')

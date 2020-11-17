@@ -80,8 +80,10 @@ class CivilResponsibilityRequestController extends Controller
     public function update(Request $request, $id)
     {
         $civilResponsibilityRequest = CivilResponsibilityRequest::find($id);
+
         $civilResponsibilityRequest->user_id = $request['user_id'];
-        
+        $civilResponsibilityRequest->status = $request['status'];
+
         $civilResponsibilityRequest->save();
 
         return redirect('/CivilResponsibilityRequests')->with('success', 'Заявката е назначена!');

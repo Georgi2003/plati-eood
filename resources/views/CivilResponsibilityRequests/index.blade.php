@@ -19,22 +19,25 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#new">Нови</a>
+            <a class="nav-link active" data-toggle="tab" href="#unassigned">Неназначени</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#offerMade">Направена оферта</a>
+            <a class="nav-link" data-toggle="tab" href="#offerMade">Обработени</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#dealMade">Сключена сделка</a>
+            <a class="nav-link" data-toggle="tab" href="#dealMade">Завършени</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#archive">Архив</a>
+            <a class="nav-link" data-toggle="tab" href="#archive">Архивирани</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#all">Всички</a>
         </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div id="new" class="container tab-pane active"><br>
+        <div id="unassigned" class="container tab-pane active"><br>
             <h3>Нови заявки</h3>
             @include('CivilResponsibilityRequests.tabs.unassigned')
         </div>
@@ -46,6 +49,9 @@
       </div>
       <div id="archive" class="container tab-pane fade"><br>
           <h3>Архивирани</h3>
+      </div>
+      <div id="all" class="container tab-pane fade"><br>
+          <h3>Всички</h3>
       </div>
     </div>
 </div>
@@ -60,7 +66,7 @@
 
 <script>
     $(document).ready( function () {
-        $('#newRquest').DataTable({
+        $('#unassignedRquest').DataTable({
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },

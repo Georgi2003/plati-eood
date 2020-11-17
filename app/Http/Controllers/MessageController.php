@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -14,7 +15,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('messages.index');
+        //
     }
 
     /**
@@ -35,7 +36,15 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = new Message;
+       
+        $message->message = $request['message'];
+        $message->civil_responsibility_request_id = 1;
+        $message->user_id = $request['user_id'];
+
+        $message->save();
+
+        return redirect('/CivilResponsibilityRequests')->with('success', 'Успешно добавихте съобщение!');
     }
 
     /**

@@ -12,4 +12,9 @@ class Message extends Model
     	'civil_responsibility_request_id',
     	'user_id',
 	];
+
+	public function user()
+    {
+    	return $this->belongsTo('App\Models\User');
+    }
 }
