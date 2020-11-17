@@ -81,12 +81,16 @@ class CivilResponsibilityRequestController extends Controller
     {
         $civilResponsibilityRequest = CivilResponsibilityRequest::find($id);
 
-        $civilResponsibilityRequest->user_id = $request['user_id'];
+        if(!$request['user_id'] == 0)
+        {
+            $civilResponsibilityRequest->user_id = $request['user_id'];
+        }
+        
         $civilResponsibilityRequest->status = $request['status'];
 
         $civilResponsibilityRequest->save();
 
-        return redirect('/CivilResponsibilityRequests')->with('success', 'Заявката е назначена!');
+        return redirect('/CivilResponsibilityRequests')->with('success', 'Промяната е извършена успешно!');
     }
 
     /**

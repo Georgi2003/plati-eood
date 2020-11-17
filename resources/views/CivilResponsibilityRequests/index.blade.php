@@ -21,18 +21,20 @@
           <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#unassigned">Неназначени</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#offerMade">Обработени</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#dealMade">Завършени</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#archive">Архивирани</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#all">Всички</a>
-        </li>
+        @if(Auth::user()->isSuperAdmin())
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#offerMade">Обработени</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#dealMade">Завършени</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#archive">Архивирани</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#all">Всички</a>
+          </li>
+        @endif
     </ul>
 
     <!-- Tab panes -->
@@ -41,18 +43,20 @@
             <h3>Нови заявки</h3>
             @include('CivilResponsibilityRequests.tabs.unassigned')
         </div>
+        @if(Auth::user()->isSuperAdmin())
         <div id="offerMade" class="container tab-pane fade"><br>
             <h3>Направена оферта</h3>
         </div>
         <div id="dealMade" class="container tab-pane fade"><br>
           <h3>Сключена сделка</h3>
-      </div>
-      <div id="archive" class="container tab-pane fade"><br>
-          <h3>Архивирани</h3>
-      </div>
-      <div id="all" class="container tab-pane fade"><br>
-          <h3>Всички</h3>
-      </div>
+        </div>
+        <div id="archive" class="container tab-pane fade"><br>
+            <h3>Архивирани</h3>
+        </div>
+        <div id="all" class="container tab-pane fade"><br>
+            <h3>Всички</h3>
+        </div>
+        @endif
     </div>
 </div>
 

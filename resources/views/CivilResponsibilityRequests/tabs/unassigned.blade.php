@@ -3,7 +3,9 @@
         <tr>
             <th>№</th>
             <th>Статус</th>
-            <th>Назначи</th>
+            @if(Auth::user()->isSuperAdmin())
+                <th>Назначи</th>
+            @endif
             <th>Запази</th>
             <th>Бележки</th>
             <th>Дата</th>
@@ -25,6 +27,7 @@
 
     <tbody id="todos-list">
         @foreach($allCivilResponsibilityRequests as $civilResponsibilityRequests)
+        @if($civilResponsibilityRequests->user_id == Auth::user()->id || Auth::user()->isSuperAdmin())
         @if($civilResponsibilityRequests->status == "Неназначени")
         <tr>
             <td>{{ $loop->iteration }}</td> 
@@ -35,45 +38,50 @@
                     <select name="status">
                         <option value="{{ $civilResponsibilityRequests->status }}">{{ $civilResponsibilityRequests->status }}</option>
                         <option value="Обработени">Обработени</option>
-                        <option value="Завършени">Завършени</option>
+                        @if(Auth::user()->isSuperAdmin())
+                        <option value="Завършени">Завършени</option>                    
                         <option value="Архивирани">Архивирани</option>
                         <option value="Всички">Всички</option>
+                        @endif
                     </select>
                 </td> 
+                @if(Auth::user()->isSuperAdmin())
                 <td>
                     <select name="user_id">
                         <option value="{{ $civilResponsibilityRequests->user_id }}">{{ $civilResponsibilityRequests->user->name }}</option>
                         @foreach($allUsers as $users)
-                            <option value="{{ $users->id }}">{{ $users->name }}</option>
+                        <option value="{{ $users->id }}">{{ $users->name }}</option>
                         @endforeach
                     </select>
                 </td>
+                @endif
                 <td>    
                     <input type="submit" value="Запази">
                 </td>
-                </form>     
+            </form>     
             <td>
                 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
                     Виж
                 </button>
             </td>
             <td>{{ $civilResponsibilityRequests->created_at }}</td>
-            
+
             <td>{{ $civilResponsibilityRequests->phone }}</td>
-            
+
             <td>{{ $civilResponsibilityRequests->adress }}</td>
             <td>{{ $civilResponsibilityRequests->coupon_number }}</td>
             <td>{{ $civilResponsibilityRequests->coupon_file }}</td>
             <td>{{ $civilResponsibilityRequests->registration_number }}</td>
-            
+
             <td>{{ $civilResponsibilityRequests->vehicle_type }}</td>
             <td>До {{ $civilResponsibilityRequests->kW }}kW ({{ $civilResponsibilityRequests->horse_power }}к. с.)</td>
-            
+
             <td>До {{ $civilResponsibilityRequests->volume }}cm³ вкл.</td>
             <td>{{ $civilResponsibilityRequests->year_production }}</td>
             <td>{{ $civilResponsibilityRequests->payments_count }}</td>
             <td>{{ $civilResponsibilityRequests->insuranceCompany->name }}</td>
         </tr>
+        @endif
         @endif
         @endforeach
     </tbody>
