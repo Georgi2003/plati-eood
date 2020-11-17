@@ -15,9 +15,13 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->Text('message')->default('Няма бележи');;
+            $table->Text('message')->default('Няма бележи');
+            
             $table->unsignedBigInteger('civil_responsibility_request_id');
             $table->foreign('civil_responsibility_request_id')->references('id')->on('civil_responsibility_requests');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             
             $table->timestamps();
         });

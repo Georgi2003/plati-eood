@@ -29,9 +29,7 @@
             <td>{{ $loop->iteration }}</td> 
             <td>{{ $civilResponsibilityRequests->status }}</td>
             <td>
-                <button>
-                    <a style = "text-decoration: none; color: black;" href = "{{ url('messages') }}">Прочети</a>
-                </button>
+                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Виж</button>
             </td>
             <td>{{ $civilResponsibilityRequests->created_at }}</td>
             <td>
@@ -66,4 +64,7 @@
         @endif
         @endforeach
     </tbody>
+
+    @include('CivilResponsibilityRequests.messages.index')
+    
 </table>

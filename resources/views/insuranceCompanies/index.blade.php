@@ -13,8 +13,13 @@
         <div style=" margin: 50px;">
             <div class="d-flex bd-highlight mb-4">
                 <div class="p-2 w-100 bd-highlight"></div>
-            </div>
 
+                <div class="p-2 flex-shrink-0 bd-highlight">
+                    <button class="btn btn-success" id="btn-add">
+                        Добави
+                    </button>
+                </div>
+            </div>
             <table id="example" class="display nowrap" style="border:1px">
                 <thead>
                     <tr>
@@ -48,17 +53,20 @@
                     @endforeach
                 </tbody>
             </table>
-    </div>
+        </div>
+        
+        @include('insuranceCompanies.create')
+        <script src="{{ asset('js/insuranceCompanies/create.js') }}"></script>
 
-    <script>
-        $(document).ready( function () {
-            $('#example').DataTable({
-                rowReorder: {
-                    selector: 'td:nth-child(2)'
-                },
-                responsive: true
+        <script>
+            $(document).ready( function () {
+                $('#example').DataTable({
+                    rowReorder: {
+                        selector: 'td:nth-child(2)'
+                    },
+                    responsive: true
+                });
             });
-        });
-    </script>
-    <br>
-</x-app-layout>
+        </script>
+        <br>
+    </x-app-layout>

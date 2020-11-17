@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CivilResponsibilityRequest;
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class CivilResponsibilityRequestController extends Controller
@@ -17,10 +18,12 @@ class CivilResponsibilityRequestController extends Controller
     {
         $CivilResponsibilityRequests = CivilResponsibilityRequest::all();
         $users = User::all();
+        $messages = Message::all();
         
         return view('CivilResponsibilityRequests.index', [
             'allCivilResponsibilityRequests' => $CivilResponsibilityRequests,
-            'allUsers' => $users
+            'allUsers' => $users,
+            'allMessages' => $messages
         ]);
     }
 
