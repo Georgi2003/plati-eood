@@ -6,6 +6,8 @@ use App\Models\CivilResponsibilityRequest;
 use App\Models\User;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Mail\Email;
+use Illuminate\Support\Facades\Mail;
 
 class CivilResponsibilityRequestController extends Controller
 {
@@ -84,6 +86,15 @@ class CivilResponsibilityRequestController extends Controller
         if(!$request['user_id'] == 0)
         {
             $civilResponsibilityRequest->user_id = $request['user_id'];
+
+            /* mail */
+            //dd($civilResponsibilityRequest->user->email);
+            
+            $mail = new \stdClass();
+            $mail->sender = '„Плати“ ООД';
+            $mail->receiver = $civilResponsibilityRequest->user->name;
+     
+            Mail::to($civilResponsibilityRequest->user->email)->send(new Email($mail));
         }
         
         $civilResponsibilityRequest->status = $request['status'];

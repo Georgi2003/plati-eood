@@ -31,3 +31,4 @@ Route::resource('/CivilResponsibilityRequests', 'App\Http\Controllers\CivilRespo
 
 Route::resource('/messages', 'App\Http\Controllers\MessageController');
 
+Route::get('mail/send', 'App\Http\Controllers\MailController@send');
