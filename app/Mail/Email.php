@@ -35,8 +35,9 @@ class Email extends Mailable
      */
     public function build()
     {
-        return $this->from('sender@example.com')
+        return $this->from('admin@abv.bg')
                     ->view('mails.request')
-                    ->text('mails.request_plain');
+                    ->text('mails.request_plain')
+                    ->subject('Ново съобщение(„Плати“ ООД)');
     }
 }

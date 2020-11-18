@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\CivilResponsibilityRequest;
 use App\Models\User;
 use App\Models\Message;
-use Illuminate\Http\Request;
+use App\Http\Requests\CivilResponsibilityRequestPost;
 use App\Mail\Email;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class CivilResponsibilityRequestController extends Controller
@@ -75,11 +76,11 @@ class CivilResponsibilityRequestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\CivilResponsibilityRequestPost  $request
      * @param  \App\Models\CivilResponsibilityRequest  $civilResponsibilityRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CivilResponsibilityRequestPost $request, $id)
     {
         $civilResponsibilityRequest = CivilResponsibilityRequest::find($id);
 
@@ -88,8 +89,6 @@ class CivilResponsibilityRequestController extends Controller
             $civilResponsibilityRequest->user_id = $request['user_id'];
 
             /* mail */
-            //dd($civilResponsibilityRequest->user->email);
-            
             $mail = new \stdClass();
             $mail->sender = '„Плати“ ООД';
             $mail->receiver = $civilResponsibilityRequest->user->name;

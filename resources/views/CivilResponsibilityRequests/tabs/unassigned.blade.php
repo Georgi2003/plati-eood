@@ -48,7 +48,7 @@
                 @if(Auth::user()->isSuperAdmin())
                 <td>
                     <select name="user_id">
-                        <option value="{{ $civilResponsibilityRequests->user_id }}">{{ $civilResponsibilityRequests->user->name }}</option>
+                        <option value="0">{{ $civilResponsibilityRequests->user->name }}</option>
                         @foreach($allUsers as $users)
                         <option value="{{ $users->id }}">{{ $users->name }}</option>
                         @endforeach
