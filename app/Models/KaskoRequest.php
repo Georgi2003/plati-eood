@@ -15,4 +15,29 @@ class KaskoRequest extends Model
     	'status',
     	'message',
 	];
+
+	private static function getRequestsByStatus(string $status)
+	{
+		return static::where('status', $status)->get();
+	}
+
+	public static function newRequests()
+	{
+		return static::getRequestsByStatus(config('consts.KASKO_REQUEST_NEW'));
+	}
+
+	public static function offeredRequests()
+	{
+		return static::getRequestsByStatus(config('consts.KASKO_REQUEST_OFFER_MADE'));
+	}
+
+	public static function dealMadeRequests()
+	{
+		return static::getRequestsByStatus(config('consts.KASKO_REQUEST_DEAL_MADE'));
+	}
+
+	public static function archiveRequests()
+	{
+		return static::getRequestsByStatus(config('consts.KASKO_REQUEST_ARCHIVE'));
+	}
 }

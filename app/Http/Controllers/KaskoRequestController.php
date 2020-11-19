@@ -15,10 +15,16 @@ class KaskoRequestController extends Controller
      */
     public function index()
     {
-        $kaskoRequests = KaskoRequest::all();
+        $newKaskoRequests = KaskoRequest::newRequests();
+        $offeredKaskoRequests = KaskoRequest::offeredRequests();
+        $dealMadeRequests = KaskoRequest::dealMadeRequests();
+        $archiveRequests = KaskoRequest::archiveRequests();
 
         return view('kaskoRequests.index', [
-            'allKaskoRequests' => $kaskoRequests
+            'newKaskoRequests' => $newKaskoRequests,
+            'offeredKaskoRequests' => $offeredKaskoRequests,
+            'dealMadeRequests' => $dealMadeRequests,
+            'archiveRequests' => $archiveRequests,
         ]);
     }
 

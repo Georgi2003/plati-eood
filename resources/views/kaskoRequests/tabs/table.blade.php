@@ -1,4 +1,4 @@
-<table id="offerMadeRquest" align="center" style="border:1px;" class="display">
+<table id="{{$tableName}}" align="center" style="border:1px;" class="display">
     <thead>
         <tr>
             <th>№</th>
@@ -14,39 +14,37 @@
     </thead>
 
     <tbody id="todos-list">
-        @foreach($allKaskoRequests as $kaskoRequests)
-        @if($kaskoRequests->status == "Направена оферта")
-        
+        @foreach($kaskoRequests as $kaskoRequest)       
         <tr>
             <td>{{ $loop->iteration }}</td> 
             <td>
-                <img id="myImg" style="width: 50px; height:50px" src="{{ $kaskoRequests->coupon_file }}">
+                <img id="myImg" style="width: 50px; height:50px" src="{{ $kaskoRequest->coupon_file }}">
             </td>
-            <td>{{ $kaskoRequests->name }}</td>
-            <td>{{ $kaskoRequests->phone }}</td>
-            <td>{{ $kaskoRequests->email }}</td>
-            
-            <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequests->id }}">
+            <td>{{ $kaskoRequest->name }}</td>
+            <td>{{ $kaskoRequest->phone }}</td>
+            <td>{{ $kaskoRequest->email }}</td>
+
+            <form method="post" action="{{ url('kaskoRequests') }}/{{ $kaskoRequest->id }}">
                 @csrf
                 @method('PUT')
-                    <td>
+                <td>
                     <select name="status">
-                        <option value="{{ $kaskoRequests->status }}">{{ $kaskoRequests->status }}</option>
+                        <option value="{{ $kaskoRequest->status }}">{{ $kaskoRequest->status }}</option>
                         <option value="Нова заявка">Нова заявка</option>
+                        <option value="Направена оферта">Направена оферта</option>
                         <option value="Сключена сделка">Сключена сделка</option>
                         <option value="Архивирана">Архивирана</option>
                     </select>
+                </td>            
                 <td>                
-                    <textarea name="message" rows="3" cols="20">{{ $kaskoRequests->message }}</textarea>
+                    <textarea name="message" rows="3" cols="20">{{ $kaskoRequest->message }}</textarea>
                 </td>
                 <td>
                     <input type="submit" value="Запази">
                 </td>
-            </form> 
-            </td>
-            <td>{{ $kaskoRequests->created_at }}</td>
+            </form>
+            <td>{{ $kaskoRequest->created_at }}</td>
         </tr>
-        @endif
         @endforeach
     </tbody>
 </table>
