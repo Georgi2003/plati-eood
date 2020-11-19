@@ -89,11 +89,7 @@ class CivilResponsibilityRequestController extends Controller
             $civilResponsibilityRequest->user_id = $request['user_id'];
 
             /* mail */
-            $mail = new \stdClass();
-            $mail->sender = '„Плати“ ООД';
-            $mail->receiver = $civilResponsibilityRequest->user->name;
-     
-            Mail::to($civilResponsibilityRequest->user->email)->send(new Email($mail));
+            $this->Mail($civilResponsibilityRequest->user->name, $civilResponsibilityRequest->user->email);
         }
         
         $civilResponsibilityRequest->status = $request['status'];
@@ -101,6 +97,16 @@ class CivilResponsibilityRequestController extends Controller
         $civilResponsibilityRequest->save();
 
         return redirect('/CivilResponsibilityRequests')->with('success', 'Промяната е извършена успешно!');
+    }
+
+    /* mail */
+    private function Mail($receiver, $userMail)
+    {
+        $mail = new \stdClass();
+            $mail->sender = '„Плати“ ООД';
+            $mail->receiver = $receiver;
+     
+            Mail::to($userMail)->send(new Email($mail));
     }
 
     /**

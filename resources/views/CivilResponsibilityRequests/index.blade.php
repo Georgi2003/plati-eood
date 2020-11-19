@@ -40,15 +40,15 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="unassigned" class="container tab-pane active"><br>
-            <h3>Нови заявки</h3>
+            <h3>Неназначени</h3>
             @include('CivilResponsibilityRequests.tabs.unassigned')
         </div>
         @if(Auth::user()->isSuperAdmin())
         <div id="offerMade" class="container tab-pane fade"><br>
-            <h3>Направена оферта</h3>
+            <h3>Обработени</h3>
         </div>
         <div id="dealMade" class="container tab-pane fade"><br>
-          <h3>Сключена сделка</h3>
+          <h3>Завършени</h3>
         </div>
         <div id="archive" class="container tab-pane fade"><br>
             <h3>Архивирани</h3>

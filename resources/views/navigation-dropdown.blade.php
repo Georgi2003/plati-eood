@@ -28,6 +28,10 @@
                         <x-jet-nav-link href="{{ url('insuranceCompanies') }}">
                             Застрахователни компании
                         </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ url('tariffs') }}">
+                            Тарифи
+                        </x-jet-nav-link>
                     
                         <x-jet-nav-link href="{{ url('users') }}">
                             Админ
@@ -152,6 +156,10 @@
 
         <x-jet-responsive-nav-link href="{{ url('insuranceCompanies') }}">
             Застрахователни компании
+        </x-jet-responsive-nav-link>
+
+        <x-jet-responsive-nav-link href="{{ url('tariffs') }}">
+            Тарифи
         </x-jet-responsive-nav-link>
 
         <x-jet-responsive-nav-link href="{{ url('users') }}">
