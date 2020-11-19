@@ -27,7 +27,7 @@
 
     <tbody id="todos-list">
         @foreach($allCivilResponsibilityRequests as $civilResponsibilityRequests)
-        @if($civilResponsibilityRequests->user_id == Auth::user()->id || Auth::user()->isSuperAdmin())
+        @if($civilResponsibilityRequests->user_id == Auth::user()->id || Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
         @if($civilResponsibilityRequests->status == "Неназначени")
         <tr>
             <td>{{ $loop->iteration }}</td> 
@@ -60,7 +60,7 @@
                 </td>
             </form>     
             <td>
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                <button class="but_view" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
                     Виж
                 </button>
             </td>
