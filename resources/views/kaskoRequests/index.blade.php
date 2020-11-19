@@ -37,29 +37,29 @@
       <div id="new" class="container tab-pane active"><br>
         <h3>Нови заявки</h3>
         @include('kaskoRequests.tabs.table', [
-        'tableName' => 'newRequests',
-        'kaskoRequests' => $newKaskoRequests
+            'tableName' => 'newRequests',
+            'kaskoRequests' => $newKaskoRequests
         ])
       </div>
       <div id="offerMade" class="container tab-pane fade"><br>
         <h3>Направена оферта</h3>
         @include('kaskoRequests.tabs.table', [
-        'tableName' => 'offerMadeRequests',
-        'kaskoRequests' => $offeredKaskoRequests
+            'tableName' => 'offerMadeRequests',
+            'kaskoRequests' => $offeredKaskoRequests
         ])
       </div>
       <div id="dealMade" class="container tab-pane fade"><br>
         <h3>Сключена сделка</h3>
         @include('kaskoRequests.tabs.table', [
-        'tableName' => 'dealMadeRequests',
-        'kaskoRequests' => $dealMadeRequests
+            'tableName' => 'dealMadeRequests',
+            'kaskoRequests' => $dealMadeRequests
         ])
       </div>
       <div id="archive" class="container tab-pane fade"><br>
         <h3>Архивирани</h3>
         @include('kaskoRequests.tabs.table', [
-        'tableName' => 'archiveRequests',
-        'kaskoRequests' => $archiveRequests
+            'tableName' => 'archiveRequests',
+            'kaskoRequests' => $archiveRequests
         ])
       </div>
     </div>

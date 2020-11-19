@@ -41,7 +41,7 @@
     <div class="tab-content">
         <div id="unassigned" class="container tab-pane active"><br>
             <h3>Неназначени</h3>
-            @include('CivilResponsibilityRequests.tabs.unassigned')
+            @include('CivilResponsibilityRequests.tabs.table')
         </div>
         @if(Auth::user()->isSuperAdmin())
         <div id="offerMade" class="container tab-pane fade"><br>

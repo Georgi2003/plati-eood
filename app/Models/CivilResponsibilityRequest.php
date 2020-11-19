@@ -33,4 +33,35 @@ class CivilResponsibilityRequest extends Model
     {
     	return $this->belongsTo('App\Models\User');
     }
+
+    /*___*/
+    private static function getRequestsByStatus(string $status)
+	{
+		return static::where('status', $status)->get();
+	}
+
+	public static function unassigned()
+	{
+		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_UNASSIGNED'));
+	}
+
+	public static function processed()
+	{
+		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_PROCESSED'));
+	}
+
+	public static function completed()
+	{
+		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_COMPLETED'));
+	}
+
+	public static function archived()
+	{
+		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ARCHIVED'));
+	}
+
+	public static function allRequests()
+	{
+		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ALL'));
+	}
 }
