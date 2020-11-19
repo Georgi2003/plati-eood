@@ -4,11 +4,10 @@
 	<div class="modal-content animate" style="text-align: center;">
 		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Затвори">&times;</span>
 		<img src="{{ asset('img/avatar.jpg') }}" width="45" height="50">
-{{$civilResponsibilityRequests->id}}
 		<h1>Бележки</h1>
 		<div class="container">
 			@foreach($allMessages as $messages)
-				@if($civilResponsibilityRequests->id == $messages->civil_responsibility_request_id)
+				@if($civilResponsibilityRequestId == $messages->civil_responsibility_request_id)
 					{{ $loop->iteration }}. {{$messages->message}} Автор: {{$messages->user->name}}
 					<br>
 				@endif

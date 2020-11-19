@@ -1,4 +1,4 @@
-<table id="unassignedRquest" align="center" style="border:1px;" class="display">
+<table id="{{ $tableName }}" align="center" style="border:1px;" class="display">
     <thead>
         <tr>
             <th>№</th>
@@ -26,17 +26,15 @@
     </thead>
 
     <tbody id="todos-list">
-        @foreach($allCivilResponsibilityRequests as $civilResponsibilityRequests)
-        @if($civilResponsibilityRequests->user_id == Auth::user()->id || Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
-        @if($civilResponsibilityRequests->status == "Неназначени")
+        @foreach($civilResponsibilityRequest as $civilResponsibilityRequest)
         <tr>
             <td>{{ $loop->iteration }}</td> 
-            <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $civilResponsibilityRequests->id }}">
+            <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $civilResponsibilityRequest->id }}">
                 @csrf
                 @method('PUT')
                 <td>
                     <select name="status">
-                        <option value="{{ $civilResponsibilityRequests->status }}">{{ $civilResponsibilityRequests->status }}</option>
+                        <option value="{{ $civilResponsibilityRequest->status }}">{{ $civilResponsibilityRequest->status }}</option>
                         <option value="Обработени">Обработени</option>
                         @if(Auth::user()->isSuperAdmin())
                         <option value="Завършени">Завършени</option>                    
@@ -48,7 +46,7 @@
                 @if(Auth::user()->isSuperAdmin())
                 <td>
                     <select name="user_id">
-                        <option value="0">{{ $civilResponsibilityRequests->user->name }}</option>
+                        <option value="0">{{ $civilResponsibilityRequest->user->name }}</option>
                         @foreach($allUsers as $users)
                             <option value="{{ $users->id }}">{{ $users->name }}</option>
                         @endforeach
@@ -64,25 +62,23 @@
                     Виж
                 </button>
             </td>
-            <td>{{ $civilResponsibilityRequests->created_at }}</td>
+            <td>{{ $civilResponsibilityRequest->created_at }}</td>
 
-            <td>{{ $civilResponsibilityRequests->phone }}</td>
+            <td>{{ $civilResponsibilityRequest->phone }}</td>
 
-            <td>{{ $civilResponsibilityRequests->adress }}</td>
-            <td>{{ $civilResponsibilityRequests->coupon_number }}</td>
-            <td>{{ $civilResponsibilityRequests->coupon_file }}</td>
-            <td>{{ $civilResponsibilityRequests->registration_number }}</td>
+            <td>{{ $civilResponsibilityRequest->adress }}</td>
+            <td>{{ $civilResponsibilityRequest->coupon_number }}</td>
+            <td>{{ $civilResponsibilityRequest->coupon_file }}</td>
+            <td>{{ $civilResponsibilityRequest->registration_number }}</td>
 
-            <td>{{ $civilResponsibilityRequests->vehicle_type }}</td>
-            <td>До {{ $civilResponsibilityRequests->kW }}kW ({{ $civilResponsibilityRequests->horse_power }}к. с.)</td>
+            <td>{{ $civilResponsibilityRequest->vehicle_type }}</td>
+            <td>До {{ $civilResponsibilityRequest->kW }}kW ({{ $civilResponsibilityRequest->horse_power }}к. с.)</td>
 
-            <td>До {{ $civilResponsibilityRequests->volume }}cm³ вкл.</td>
-            <td>{{ $civilResponsibilityRequests->year_production }}</td>
-            <td>{{ $civilResponsibilityRequests->payments_count }}</td>
-            <td>{{ $civilResponsibilityRequests->insuranceCompany->name }}</td>
+            <td>До {{ $civilResponsibilityRequest->volume }}cm³ вкл.</td>
+            <td>{{ $civilResponsibilityRequest->year_production }}</td>
+            <td>{{ $civilResponsibilityRequest->payments_count }}</td>
+            <td>{{ $civilResponsibilityRequest->insuranceCompany->name }}</td>
         </tr>
-        @endif
-        @endif
         @endforeach
     </tbody>
 </table> 

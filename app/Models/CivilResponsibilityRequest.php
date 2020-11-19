@@ -34,34 +34,45 @@ class CivilResponsibilityRequest extends Model
     	return $this->belongsTo('App\Models\User');
     }
 
+    public function messages()
+    {
+    	return $this->hasMany('App\Models\Message');
+    }
+
     /*___*/
-    private static function getRequestsByStatus(string $status)
+    private static function getRequestsByStatusAndUser(string $status)
 	{
-		return static::where('status', $status)->get();
+		$query = static::where('status', $status);
+
+		if(\Auth::user()->isUser()){
+			$query->where('user_id', \Auth::id());
+		}
+
+		return $query->get();
 	}
 
-	public static function unassigned()
+	public static function getUnassignedRequestsByUser()
 	{
-		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_UNASSIGNED'));
+		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_UNASSIGNED'));
 	}
 
-	public static function processed()
+	public static function getProcessedRequestsByUser()
 	{
-		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_PROCESSED'));
+		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_PROCESSED'));
 	}
 
-	public static function completed()
+	public static function getCompleted()
 	{
-		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_COMPLETED'));
+		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_COMPLETED'));
 	}
 
-	public static function archived()
+	public static function getArchived()
 	{
-		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ARCHIVED'));
+		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ARCHIVED'));
 	}
 
 	public static function allRequests()
 	{
-		return static::getRequestsByStatus(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ALL'));
+		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ALL'));
 	}
 }

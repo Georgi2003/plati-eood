@@ -41,11 +41,18 @@
     <div class="tab-content">
         <div id="unassigned" class="container tab-pane active"><br>
             <h3>Неназначени</h3>
-            @include('CivilResponsibilityRequests.tabs.table')
+            @include('CivilResponsibilityRequests.tabs.table', [
+              'tableName' => 'unassignedRquest',
+              'civilResponsibilityRequest' => $unassigned,
+            ])
         </div>
         @if(Auth::user()->isSuperAdmin())
         <div id="offerMade" class="container tab-pane fade"><br>
             <h3>Обработени</h3>
+            @include('CivilResponsibilityRequests.tabs.table', [
+              'tableName' => 'processedRquest',
+              'civilResponsibilityRequest' => $processed,
+            ])
         </div>
         <div id="dealMade" class="container tab-pane fade"><br>
           <h3>Завършени</h3>
@@ -71,6 +78,13 @@
 <script>
     $(document).ready( function () {
         $('#unassignedRquest').DataTable({
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            responsive: true
+        });
+
+        $('#processedRquest').DataTable({
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },

@@ -19,14 +19,17 @@ class CivilResponsibilityRequestController extends Controller
      */
     public function index()
     {
-        $CivilResponsibilityRequests = CivilResponsibilityRequest::all();
-        $unassigned = CivilResponsibilityRequest::unassigned();
+        $CivilResponsibilityRequests = CivilResponsibilityRequest::with(['messages', 'messages.user'])->get();
+        $unassigned = CivilResponsibilityRequest::getUnassignedRequestsByUser();
+        $processed = CivilResponsibilityRequest::getProcessedRequestsByUser();
         $users = User::all();
         $messages = Message::all();
+        //dd($unassigned, $CivilResponsibilityRequests, $users, $messages);
         
         return view('CivilResponsibilityRequests.index', [
             'allCivilResponsibilityRequests' => $CivilResponsibilityRequests,
             'unassigned' => $unassigned,
+            'processed' => $processed,
             'allUsers' => $users,
             'allMessages' => $messages
         ]);
