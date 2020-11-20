@@ -61,17 +61,17 @@ class CivilResponsibilityRequest extends Model
 		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_PROCESSED'));
 	}
 
-	public static function getCompleted()
+	public static function getCompletedRequestsByUser()
 	{
 		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_COMPLETED'));
 	}
 
-	public static function getArchived()
+	public static function getArchivedRequestsByUser()
 	{
 		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ARCHIVED'));
 	}
 
-	public static function allRequests()
+	public static function allRequestsByUser()
 	{
 		return static::getRequestsByStatusAndUser(config('consts.CIVIL_RESPONSIBILITY_REQUEST_ALL'));
 	}

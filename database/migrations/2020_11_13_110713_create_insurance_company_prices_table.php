@@ -19,7 +19,7 @@ class CreateInsuranceCompanyPricesTable extends Migration
             $table->integer('kW');
             $table->integer('horse_power');
             $table->integer('volume');
-            $table->string('registration_number', 100);
+            $table->string('vehicle_registration_code', 100);
             $table->integer('year_production');
             $table->integer('payments_count');
 

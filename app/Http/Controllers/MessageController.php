@@ -37,7 +37,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $message = new Message;
-       
+        
         $message->message = $request['message'];
         $message->civil_responsibility_request_id = 1;
         $message->user_id = \Auth::id();

@@ -4,13 +4,12 @@
 	<div class="modal-content animate" style="text-align: center;">
 		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Затвори">&times;</span>
 		<img src="{{ asset('img/avatar.jpg') }}" width="45" height="50">
-		<h1>Бележки</h1>
+		<h3>Бележки</h3>
+
 		<div class="container">
 			@foreach($allMessages as $messages)
-				@if($civilResponsibilityRequestId == $messages->civil_responsibility_request_id)
-					{{ $loop->iteration }}. {{$messages->message}} Автор: {{$messages->user->name}}
-					<br>
-				@endif
+				{{ $loop->iteration }}. {{$messages->message}} Автор: {{$messages->user->name}}
+				<br>
 			@endforeach
 		</div>
 
@@ -22,9 +21,6 @@
 				    {{ csrf_field() }}
 					<textarea name="message" rows="3" cols="20" placeholder = "Въведи бележка"></textarea>
 					<br>
-					<input id = "user_id" type = "number" name = "user_id" value="{{ Auth::user()->id }}">		
-
-
 					<input type = "submit" name = "submit" value="Запази">
 				</form>
 			</div>

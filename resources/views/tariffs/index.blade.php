@@ -1,7 +1,7 @@
 <x-app-layout>
 	<x-slot name="header">
 		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-			Управление на списък със застрахователни компании
+			Тарифи
 		</h2>
 	</x-slot>
 
@@ -34,6 +34,13 @@
 				<thead>
 					<tr>
 						<th>№</th>
+						<th>Застрахователна компания</th>
+						<th>Брой вноски</th>
+						<th>Вид МПС</th>
+						<th>Мощност</th>
+						<th>Обем на двигателя</th>
+						<th>Регистрационен №</th>
+						<th>Година на производство</th>
 					</tr>
 				</thead>
 
@@ -41,6 +48,13 @@
 					@foreach($allInsuranceCompanyPrice as $insuranceCompanyPrice)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
+							<td>{{ $insuranceCompanyPrice->insurance_company_id }}</td>
+							<td>{{ $insuranceCompanyPrice->vehicle_type }}</td>
+							<td>{{ $insuranceCompanyPrice->payments_count }}</td>
+							<td>До {{ $insuranceCompanyPrice->kW }}kW ({{ $insuranceCompanyPrice->horse_power }}к. с.)</td>
+							<td>{{ $insuranceCompanyPrice->volume }}</td>
+							<td>{{ $insuranceCompanyPrice->vehicle_registration_code }}</td>
+							<td>{{ $insuranceCompanyPrice->year_production }}</td>
 						</tr>
 					@endforeach
 				</tbody>

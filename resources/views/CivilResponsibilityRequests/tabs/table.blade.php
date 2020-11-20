@@ -38,7 +38,7 @@
                         <option value="Неназначени">Неназначени</option>
                         <option value="Обработени">Обработени</option>
                         @if(Auth::user()->isSuperAdmin())
-                            <option value="Завършени">Завършени</option>                    
+                            <option value="Завършени">Завършени</option>         
                             <option value="Архивирани">Архивирани</option>
                             <option value="Всички">Всички</option>
                         @endif
@@ -69,7 +69,9 @@
 
             <td>{{ $civilResponsibilityRequest->adress }}</td>
             <td>{{ $civilResponsibilityRequest->coupon_number }}</td>
-            <td>{{ $civilResponsibilityRequest->coupon_file }}</td>
+            <td>
+                {{ $civilResponsibilityRequest->coupon_file }}
+            </td>
             <td>{{ $civilResponsibilityRequest->registration_number }}</td>
 
             <td>{{ $civilResponsibilityRequest->vehicle_type }}</td>

@@ -63,13 +63,22 @@
         </div>
         <div id="archive" class="container tab-pane fade"><br>
             <h3>Архивирани</h3>
+            @include('CivilResponsibilityRequests.tabs.table', [
+              'tableName' => 'archivedRquest',
+              'civilResponsibilityRequest' => $archived,
+            ])
         </div>
         <div id="all" class="container tab-pane fade"><br>
             <h3>Всички</h3>
+            @include('CivilResponsibilityRequests.tabs.table', [
+              'tableName' => 'allRequest',
+              'civilResponsibilityRequest' => $allRequests,
+            ])
         </div>
         @endif
     </div>
 </div>
+
 
 <div id="myModal" class="modal">
     <span class="close">&times;</span>
@@ -96,6 +105,20 @@
         });
 
         $('#completedRquest').DataTable({
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            responsive: true
+        });
+
+        $('#archivedRquest').DataTable({
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            responsive: true
+        });
+
+        $('#allRequest').DataTable({
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },
