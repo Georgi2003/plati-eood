@@ -1,8 +1,8 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      Управление на списък със застрахователни компании
-  </h2>
+      Гражданска отговорност
+    </h2>
 </x-slot>
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
@@ -23,10 +23,10 @@
         </li>
         @if(Auth::user()->isSuperAdmin())
           <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#offerMade">Обработени</a>
+              <a class="nav-link" data-toggle="tab" href="#processed">Обработени</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#dealMade">Завършени</a>
+              <a class="nav-link" data-toggle="tab" href="#completed">Завършени</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#archive">Архивирани</a>
@@ -47,15 +47,19 @@
             ])
         </div>
         @if(Auth::user()->isSuperAdmin())
-        <div id="offerMade" class="container tab-pane fade"><br>
+        <div id="processed" class="container tab-pane fade"><br>
             <h3>Обработени</h3>
             @include('CivilResponsibilityRequests.tabs.table', [
               'tableName' => 'processedRquest',
               'civilResponsibilityRequest' => $processed,
             ])
         </div>
-        <div id="dealMade" class="container tab-pane fade"><br>
+        <div id="completed" class="container tab-pane fade"><br>
           <h3>Завършени</h3>
+            @include('CivilResponsibilityRequests.tabs.table', [
+              'tableName' => 'completedRquest',
+              'civilResponsibilityRequest' => $completed,
+            ])
         </div>
         <div id="archive" class="container tab-pane fade"><br>
             <h3>Архивирани</h3>
@@ -85,6 +89,13 @@
         });
 
         $('#processedRquest').DataTable({
+            rowReorder: {
+                selector: 'td:nth-child(2)'
+            },
+            responsive: true
+        });
+
+        $('#completedRquest').DataTable({
             rowReorder: {
                 selector: 'td:nth-child(2)'
             },

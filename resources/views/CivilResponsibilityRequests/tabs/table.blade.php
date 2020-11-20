@@ -35,11 +35,12 @@
                 <td>
                     <select name="status">
                         <option value="{{ $civilResponsibilityRequest->status }}">{{ $civilResponsibilityRequest->status }}</option>
+                        <option value="Неназначени">Неназначени</option>
                         <option value="Обработени">Обработени</option>
                         @if(Auth::user()->isSuperAdmin())
-                        <option value="Завършени">Завършени</option>                    
-                        <option value="Архивирани">Архивирани</option>
-                        <option value="Всички">Всички</option>
+                            <option value="Завършени">Завършени</option>                    
+                            <option value="Архивирани">Архивирани</option>
+                            <option value="Всички">Всички</option>
                         @endif
                     </select>
                 </td> 

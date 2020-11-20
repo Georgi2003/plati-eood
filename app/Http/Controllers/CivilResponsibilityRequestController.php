@@ -22,6 +22,7 @@ class CivilResponsibilityRequestController extends Controller
         $CivilResponsibilityRequests = CivilResponsibilityRequest::with(['messages', 'messages.user'])->get();
         $unassigned = CivilResponsibilityRequest::getUnassignedRequestsByUser();
         $processed = CivilResponsibilityRequest::getProcessedRequestsByUser();
+        $completed = CivilResponsibilityRequest::getCompleted();
         $users = User::all();
         $messages = Message::all();
         //dd($unassigned, $CivilResponsibilityRequests, $users, $messages);
@@ -30,8 +31,9 @@ class CivilResponsibilityRequestController extends Controller
             'allCivilResponsibilityRequests' => $CivilResponsibilityRequests,
             'unassigned' => $unassigned,
             'processed' => $processed,
+            'completed' => $completed,
             'allUsers' => $users,
-            'allMessages' => $messages
+            'allMessages' => $messages,
         ]);
     }
 
