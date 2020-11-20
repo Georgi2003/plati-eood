@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InsuranceCompanyPrice;
+use App\Models\InsuranceCompany;
 use Illuminate\Http\Request;
 
 class InsuranceCompanyPriceController extends Controller
@@ -15,9 +16,11 @@ class InsuranceCompanyPriceController extends Controller
     public function index()
     {
         $insuranceCompanyPrice = InsuranceCompanyPrice::all();
+        $insuranceCompany = InsuranceCompany::all();
         
         return view('tariffs.index', [
             'allInsuranceCompanyPrice' => $insuranceCompanyPrice,
+            'allInsuranceCompany' => $insuranceCompany,
         ]);
     }
 
@@ -82,14 +85,21 @@ class InsuranceCompanyPriceController extends Controller
                     $payments_count = $column[6];
                 }
 
+                $price = 0;
+                if (isset($column[7])) {
+                    $price = $column[7];
+                }
+
                 $insuranceCompanyPriceData[] = [
                     'vehicle_type' => $vehicle_type,
                     'kW' => $kW,
                     'horse_power' => $horse_power,
                     'volume' => $volume,
-                    'registration_number' => $registration_number,
+                    'vehicle_registration_code' => $registration_number,
                     'year_production' => $year_production,
                     'payments_count' => $payments_count,
+                    'price' => $price,
+                    'insurance_company_id' => $request['insuranceCompany']
                 ];
                 
             }
@@ -145,3 +155,4 @@ class InsuranceCompanyPriceController extends Controller
         //
     }
 }
+//https://www.zamzar.com/uploadComplete.php?convertFile=xlsx&to=csv&session=85d742ab13c48afb1913c4a727b74&email=false&tcs=Z91

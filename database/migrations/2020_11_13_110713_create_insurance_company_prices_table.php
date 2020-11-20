@@ -22,6 +22,7 @@ class CreateInsuranceCompanyPricesTable extends Migration
             $table->string('vehicle_registration_code', 100);
             $table->integer('year_production');
             $table->integer('payments_count');
+            $table->double('price');
 
             $table->unsignedBigInteger('insurance_company_id');
             $table->foreign('insurance_company_id')->references('id')->on('insurance_companies');

@@ -17,6 +17,12 @@ class InsuranceCompanyPrice extends Model
 		'vehicle_registration_code',
 		'year_production',
 		'payments_count',
-		'insurance_company_id'
+		'insurance_company_id',
+		'price'
 	];
+
+	public function insuranceCompany()
+    {
+    	return $this->belongsTo('App\Models\InsuranceCompany');
+    }
 }

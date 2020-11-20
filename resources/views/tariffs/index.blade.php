@@ -25,6 +25,13 @@
 
 							<input type="file" id="file" accept=".csv" name="file" required>
 							
+							<select name="insuranceCompany">
+								@foreach($allInsuranceCompany as $insuranceCompany)
+	                                <option value="{{ $insuranceCompany->id }}">{{ $insuranceCompany->name }}</option>
+	                            @endforeach
+	                        </select>
+	                        
+							
 							<input id="submit" type="submit" value="Качи файл">
 						</form>
 					</div>
@@ -35,6 +42,7 @@
 					<tr>
 						<th>№</th>
 						<th>Застрахователна компания</th>
+						<th>Цена</th>
 						<th>Брой вноски</th>
 						<th>Вид МПС</th>
 						<th>Мощност</th>
@@ -48,7 +56,8 @@
 					@foreach($allInsuranceCompanyPrice as $insuranceCompanyPrice)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
-							<td>{{ $insuranceCompanyPrice->insurance_company_id }}</td>
+							<td>{{ $insuranceCompanyPrice->insuranceCompany->name }}</td>
+							<td>{{ $insuranceCompanyPrice->price }}</td>
 							<td>{{ $insuranceCompanyPrice->vehicle_type }}</td>
 							<td>{{ $insuranceCompanyPrice->payments_count }}</td>
 							<td>До {{ $insuranceCompanyPrice->kW }}kW ({{ $insuranceCompanyPrice->horse_power }}к. с.)</td>
