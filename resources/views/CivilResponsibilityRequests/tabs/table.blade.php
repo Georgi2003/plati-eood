@@ -3,7 +3,7 @@
         <tr>
             <th>№</th>
             <th>Статус</th>
-            @if(Auth::user()->isSuperAdmin())
+            @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
                 <th>Назначи</th>
             @endif
             <th>Запази</th>
@@ -37,14 +37,14 @@
                         <option value="{{ $civilResponsibilityRequest->status }}">{{ $civilResponsibilityRequest->status }}</option>
                         <option value="Неназначени">Неназначени</option>
                         <option value="Обработени">Обработени</option>
-                        @if(Auth::user()->isSuperAdmin())
+                        @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
                             <option value="Завършени">Завършени</option>         
                             <option value="Архивирани">Архивирани</option>
                             <option value="Всички">Всички</option>
                         @endif
                     </select>
                 </td> 
-                @if(Auth::user()->isSuperAdmin())
+                @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
                 <td>
                     <select name="user_id">
                         <option value="0">{{ $civilResponsibilityRequest->user->name }}</option>
@@ -59,24 +59,20 @@
                 </td>
             </form>     
             <td>
-                <button class="but_view" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                <button class="but_view" type="button" style="width:auto;">
                     Виж
                 </button>
             </td>
             <td>{{ $civilResponsibilityRequest->created_at }}</td>
-
             <td>{{ $civilResponsibilityRequest->phone }}</td>
-
             <td>{{ $civilResponsibilityRequest->adress }}</td>
             <td>{{ $civilResponsibilityRequest->coupon_number }}</td>
             <td>
                 {{ $civilResponsibilityRequest->coupon_file }}
             </td>
             <td>{{ $civilResponsibilityRequest->registration_number }}</td>
-
             <td>{{ $civilResponsibilityRequest->vehicle_type }}</td>
             <td>До {{ $civilResponsibilityRequest->kW }}kW ({{ $civilResponsibilityRequest->horse_power }}к. с.)</td>
-
             <td>До {{ $civilResponsibilityRequest->volume }}cm³ вкл.</td>
             <td>{{ $civilResponsibilityRequest->year_production }}</td>
             <td>{{ $civilResponsibilityRequest->payments_count }}</td>
@@ -85,4 +81,5 @@
         @endforeach
     </tbody>
 </table> 
+
 @include('CivilResponsibilityRequests.messages.index')

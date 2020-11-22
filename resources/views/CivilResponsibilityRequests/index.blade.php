@@ -14,14 +14,14 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
 <div class="container mt-3">
-      <h2>Заявки за Каско</h2>
+      <h2>Заявки за Гражданска отговорност</h2>
       <br>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs">
           <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#unassigned">Неназначени</a>
         </li>
-        @if(Auth::user()->isSuperAdmin())
+        @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
           <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#processed">Обработени</a>
           </li>
@@ -46,7 +46,7 @@
               'civilResponsibilityRequest' => $unassigned,
             ])
         </div>
-        @if(Auth::user()->isSuperAdmin())
+        @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
         <div id="processed" class="container tab-pane fade"><br>
             <h3>Обработени</h3>
             @include('CivilResponsibilityRequests.tabs.table', [

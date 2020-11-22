@@ -25,8 +25,10 @@
                     <tr>
                         <th>№</th>
                         <th>Застрахователна компания</th>
-                        <th>Изтрии</th>
-                        <th>Актуализирай</th>
+                        @if(Auth::user()->isSuperAdmin())
+                            <th>Изтрии</th>
+                            <th>Актуализирай</th>
+                        @endif
                     </tr>
                 </thead>
 
@@ -35,6 +37,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td> 
                         <td>{{ $insuranceCompany->name }}</td>
+                        @if(Auth::user()->isSuperAdmin())
                         <td>
                             <form method="post" action="{{ url('insuranceCompanies') }}/{{ $insuranceCompany->id }}">
                                 @csrf
@@ -49,6 +52,7 @@
                                 <a style = "text-decoration: none; color: black;" href = "{{ url('insuranceCompanies') }}/{{ $insuranceCompany->id }}/edit">Актуализирай</a>
                             </button>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

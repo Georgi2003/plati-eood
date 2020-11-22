@@ -6,15 +6,15 @@
 		<img src="{{ asset('img/avatar.jpg') }}" width="45" height="50">
 		<h3>Бележки</h3>
 
-		<div class="container">
+		<div id="modalContainer" class="container">
 			@foreach($allMessages as $messages)
 				{{ $loop->iteration }}. {{$messages->message}} Автор: {{$messages->user->name}}
 				<br>
 			@endforeach
 		</div>
 
-		<div class="container" style="background-color:#f1f1f1">
-			<button id="note" type="button" title="Отвори" class="psw">Въведи бележка</button>
+		<div style="background-color:#f1f1f1">
+			<button class="container" id="note" type="button" title="Отвори" class="psw">Въведи бележка</button>
 			<button id="closeNote" type="button" title="Затвори">Затвори</button>
 			<div id="addNote">
 	      		<form method="post" action = "/messages"> 
@@ -45,12 +45,9 @@
 		    $("#note").show();
 		    $("#closeNote").hide();
 		});
-	});
 
-	var modal = document.getElementById('id01');
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
+		$(".but_view").click(function(){
+			$('#id01').show();
+		});
+	});
 </script>
