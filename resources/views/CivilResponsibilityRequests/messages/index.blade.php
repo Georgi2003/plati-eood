@@ -5,11 +5,13 @@
 		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Затвори">&times;</span>
 		<img src="{{ asset('img/avatar.jpg') }}" width="45" height="50">
 		<h3>Бележки</h3>
-
+		 
 		<div id="modalContainer" class="container">
 			@foreach($allMessages as $messages)
+			@if(1 == $messages->civil_responsibility_request_id)
 				{{ $loop->iteration }}. {{$messages->message}} Автор: {{$messages->user->name}}
 				<br>
+			@endif
 			@endforeach
 		</div>
 
@@ -21,6 +23,8 @@
 				    {{ csrf_field() }}
 					<textarea name="message" rows="3" cols="20" placeholder = "Въведи бележка"></textarea>
 					<br>
+					<div class="GFGclass" id="divGFG"></div>
+
 					<input type = "submit" name = "submit" value="Запази">
 				</form>
 			</div>

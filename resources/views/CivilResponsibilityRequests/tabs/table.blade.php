@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>№</th>
+            <th>id</th>
             <th>Статус</th>
             @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
                 <th>Назначи</th>
@@ -29,6 +30,7 @@
         @foreach($civilResponsibilityRequest as $civilResponsibilityRequest)
         <tr>
             <td>{{ $loop->iteration }}</td> 
+            <td class="id">{{ $civilResponsibilityRequest->id }}</td>
             <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $civilResponsibilityRequest->id }}">
                 @csrf
                 @method('PUT')
@@ -81,5 +83,18 @@
         @endforeach
     </tbody>
 </table> 
+<script type="text/javascript">
+    $(function () { 
+        $(".but_view").click(function () { 
+            var a = $(this).parents("tr").find(".id").text(); 
+            var p = "";  
+            p +=  "<input type = 'hidden' name = 'civil_responsibility_request_id' value='" + a + "'>"; 
+            //CLEARING THE PREFILLED DATA 
+            $("#divGFG").empty(); 
+            //WRITING THE DATA ON MODEL 
+            $("#divGFG").append(p); 
+        }); 
+    }); 
+</script> 
 
 @include('CivilResponsibilityRequests.messages.index')

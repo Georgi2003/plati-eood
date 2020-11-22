@@ -39,7 +39,7 @@ class MessageController extends Controller
         $message = new Message;
         
         $message->message = $request['message'];
-        $message->civil_responsibility_request_id = 1;
+        $message->civil_responsibility_request_id = $request['civil_responsibility_request_id'];
         $message->user_id = \Auth::id();
 
         $message->save();

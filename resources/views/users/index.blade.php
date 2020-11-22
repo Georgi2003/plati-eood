@@ -8,6 +8,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+    @include('links');
 
     <div class="container">
         <div style=" margin: 50px;">
@@ -79,6 +80,17 @@
     <script>
         $(document).ready( function () {
             $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy',
+                    {
+                        extend: 'excel',
+                        messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+                    },
+                    {
+                        extend: 'pdf',
+                        messageBottom: null
+                    }],
                 rowReorder: {
                     selector: 'td:nth-child(2)'
                 },
