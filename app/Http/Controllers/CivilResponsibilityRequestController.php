@@ -27,7 +27,7 @@ class CivilResponsibilityRequestController extends Controller
         $allRequests = CivilResponsibilityRequest::all();
         $users = User::all();
         $messages = Message::all();
-        //dd($CivilResponsibilityRequests);
+        // dd($unassigned[0]->messages);
         
         return view('CivilResponsibilityRequests.index', [
             'allCivilResponsibilityRequests' => $CivilResponsibilityRequests,

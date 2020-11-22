@@ -42,8 +42,8 @@ class CivilResponsibilityRequest extends Model
     /*___*/
     private static function getRequestsByStatusAndUser(string $status)
 	{
-		$query = static::where('status', $status);
-
+		$query = static::with(['messages', 'messages.user'])->where('status', $status);
+		
 		if(\Auth::user()->isUser()){
 			$query->where('user_id', \Auth::id());
 		}

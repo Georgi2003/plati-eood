@@ -7,11 +7,9 @@
 		<h3>Бележки</h3>
 		 
 		<div id="modalContainer" class="container">
-			@foreach($allMessages as $messages)
-			@if(1 == $messages->civil_responsibility_request_id)
-				{{ $loop->iteration }}. {{$messages->message}} Автор: {{$messages->user->name}}
+			@foreach($allMessages as $message)
+				{{ $loop->iteration }}. {{$message->message}} Автор: {{$message->user->name}}
 				<br>
-			@endif
 			@endforeach
 		</div>
 
