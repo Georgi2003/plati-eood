@@ -2,7 +2,6 @@
     <thead>
         <tr>
             <th>№</th>
-            <th>id</th>
             <th>Статус</th>
             @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
                 <th>Назначи</th>
@@ -23,14 +22,14 @@
             <th>Година на производство</th>
             <th>Брой вноски</th>
             <th>Последна компания</th>
+            <th>Поръчка №</th>
         </tr>
     </thead>
 
     <tbody id="todos-list">
         @foreach($civilResponsibilityRequest as $civilResponsibilityRequest)
         <tr>
-            <td>{{ $loop->iteration }}</td> 
-            <td class="id">{{ $civilResponsibilityRequest->id }}</td>
+            <td>{{ $loop->iteration }}</td>
             <form method="post" action="{{ url('CivilResponsibilityRequests') }}/{{ $civilResponsibilityRequest->id }}">
                 @csrf
                 @method('PUT')
@@ -79,12 +78,13 @@
             <td>{{ $civilResponsibilityRequest->year_production }}</td>
             <td>{{ $civilResponsibilityRequest->payments_count }}</td>
             <td>{{ $civilResponsibilityRequest->insuranceCompany->name }}</td>
+            <td class="id">{{ $civilResponsibilityRequest->id }}</td>
         </tr>
         @endforeach
     </tbody>
 </table> 
 <script type="text/javascript">
-    $(function () { 
+    $(function () {
         $(".but_view").click(function () { 
             var a = $(this).parents("tr").find(".id").text(); 
             var p = "";  
