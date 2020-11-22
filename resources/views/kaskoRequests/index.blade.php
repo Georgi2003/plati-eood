@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="{{ asset('css/img.css') }}">
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+@include('links');
 
 <div class="container mt-3">
     <h2>Заявки за Каско</h2>
@@ -72,34 +73,6 @@
 </div>
 
 <script src="{{ asset('js/img.js') }}"></script>
-
-<script>
-    $(document).ready( function () {
-       $('#newRequests').DataTable({
-          rowReorder: {
-             selector: 'td:nth-child(2)'
-         },
-         responsive: true
-     });
-       $('#offerMadeRequests').DataTable({
-          rowReorder: {
-             selector: 'td:nth-child(2)'
-         },
-         responsive: true
-     });
-       $('#dealMadeRequests').DataTable({
-          rowReorder: {
-             selector: 'td:nth-child(2)'
-         },
-         responsive: true
-     });
-       $('#archiveRequests').DataTable({
-          rowReorder: {
-             selector: 'td:nth-child(2)'
-         },
-         responsive: true
-     });
-   });
-</script>
+<script src="{{ asset('js/KaskoRequests/tabs.js') }}"></script>
 <br>
 </x-app-layout>

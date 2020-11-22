@@ -22,7 +22,7 @@
             <th>Година на производство</th>
             <th>Брой вноски</th>
             <th>Последна компания</th>
-            <th>Поръчка №</th>
+            <th><i>Поръчка №</i></th>
         </tr>
     </thead>
 
@@ -78,7 +78,7 @@
             <td>{{ $civilResponsibilityRequest->year_production }}</td>
             <td>{{ $civilResponsibilityRequest->payments_count }}</td>
             <td>{{ $civilResponsibilityRequest->insuranceCompany->name }}</td>
-            <td class="id">{{ $civilResponsibilityRequest->id }}</td>
+            <td class="id"><i>{{ $civilResponsibilityRequest->id }}</i></td>
         </tr>
         @endforeach
     </tbody>

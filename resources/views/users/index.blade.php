@@ -76,21 +76,29 @@
                 </tbody>
             </table>
         </div>
-        
+    </div>    
     <script>
         $(document).ready( function () {
             $('#example').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy',
-                    {
-                        extend: 'excel',
-                        messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+                'copy',
+                {
+                    extend: 'excel',
+                    messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+                },
+                {
+                    extend: 'pdf',
+                    messageBottom: null
+                },
+                {
+                extend: 'print',
+                messageTop: function () {                   
+                    return 'Печат на оригинала';
                     },
-                    {
-                        extend: 'pdf',
                         messageBottom: null
-                    }],
+                    }
+                ],
                 rowReorder: {
                     selector: 'td:nth-child(2)'
                 },
