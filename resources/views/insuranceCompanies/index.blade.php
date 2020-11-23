@@ -66,6 +66,7 @@
 
     <script>
         $(document).ready( function () {
+            // $('#example').DataTable().search( 'New York' ).draw();
             $('#example').DataTable({
                 dom: 'Bfrtip',
                 buttons: [

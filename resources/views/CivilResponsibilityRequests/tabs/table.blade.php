@@ -60,7 +60,7 @@
                 </td>
             </form>     
             <td>
-                <button class="but_view" type="button" style="width:auto;">
+                <button class="but_view" onclick="document.getElementById('id01').style.display='block'" type="button" style="width:auto;">
                     Виж
                 </button>
             </td>

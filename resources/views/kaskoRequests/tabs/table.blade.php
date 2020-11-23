@@ -12,13 +12,16 @@
             <th>Дата</th>
         </tr>
     </thead>
-
+    
     <tbody id="todos-list">
         @foreach($kaskoRequests as $kaskoRequest)       
         <tr>
             <td>{{ $loop->iteration }}</td> 
             <td>
-                <img id="myImg" style="width: 50px; height:50px" src="{{ $kaskoRequest->coupon_file }}">
+                <div class="w3-container w3-third">
+                    <img src="{{ $kaskoRequest->coupon_file }}" style="" 
+                    onclick="onClick(this)" class="w3-hover-opacity">
+                </div>
             </td>
             <td>{{ $kaskoRequest->name }}</td>
             <td>{{ $kaskoRequest->phone }}</td>

@@ -23,6 +23,7 @@ $(document).ready( function () {
 		},
 		responsive: true
 	});
+
 	$('#offerMadeRequests').DataTable({
 		dom: 'Bfrtip',
 		buttons: [
@@ -47,6 +48,7 @@ $(document).ready( function () {
 		},
 		responsive: true
 	});
+
 	$('#dealMadeRequests').DataTable({
 		dom: 'Bfrtip',
 		buttons: [
@@ -71,6 +73,7 @@ $(document).ready( function () {
 		},
 		responsive: true
 	});
+	
 	$('#archiveRequests').DataTable({
 		dom: 'Bfrtip',
 		buttons: [
