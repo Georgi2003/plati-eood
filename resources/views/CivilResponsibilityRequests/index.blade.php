@@ -10,8 +10,6 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 
 <link rel="stylesheet" href="{{ asset('css/img.css') }}">
-
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 @include('links');
 
 <div class="container mt-3">
