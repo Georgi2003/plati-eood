@@ -27,8 +27,13 @@ class CivilResponsibilityRequestController extends Controller
         $allRequests = CivilResponsibilityRequest::all();
         $users = User::all();
         $messages = Message::all();
-        // dd($unassigned[0]->messages);
-        
+        // dd($unassigned[0]->messages[0]->message);
+        // foreach($CivilResponsibilityRequests as $unassigned){
+        //     foreach($unassigned->messages as $messages){
+        //         dd($messages->id);
+        //     }
+        // }
+
         return view('CivilResponsibilityRequests.index', [
             'allCivilResponsibilityRequests' => $CivilResponsibilityRequests,
             'unassigned' => $unassigned,
@@ -103,7 +108,7 @@ class CivilResponsibilityRequestController extends Controller
             /* mail */
             $this->Mail($civilResponsibilityRequest->user->name, $civilResponsibilityRequest->user->email);
         }
-        
+
         $civilResponsibilityRequest->status = $request['status'];
 
         $civilResponsibilityRequest->save();
@@ -117,7 +122,7 @@ class CivilResponsibilityRequestController extends Controller
         $mail = new \stdClass();
             $mail->sender = '„Плати“ ООД';
             $mail->receiver = $receiver;
-     
+
             Mail::to($userMail)->send(new Email($mail));
     }
 

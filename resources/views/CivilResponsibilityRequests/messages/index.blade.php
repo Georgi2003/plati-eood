@@ -5,10 +5,22 @@
 		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Затвори">&times;</span>
 		<img src="{{ asset('img/avatar.jpg') }}" width="45" height="50">
 		<h3>Бележки</h3>
-		 
+
 		<div id="modalContainer" class="container">
 			@foreach($allMessages as $message)
-				{{ $loop->iteration }}. {{$message->message}} Автор: {{$message->user->name}}
+				{{ $loop->iteration }}. {{ $message->user->name }} {{ $message->created_at }}
+				<br>
+				{{$message->message }}
+
+				@if($message->user_id == Auth::user()->id)
+					<form method="post" action="{{ url('messages') }}/{{ $message->id }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="buttonDestroyMessage" style = "text-decoration: none; color: black;">
+                            Изтрий
+                        </button>
+                    </form>
+				@endif
 				<br>
 			@endforeach
 		</div>
@@ -17,7 +29,7 @@
 			<button class="container" id="note" type="button" title="Отвори" class="psw">Въведи бележка</button>
 			<button id="closeNote" type="button" title="Затвори">Затвори</button>
 			<div id="addNote">
-	      		<form method="post" action = "/messages"> 
+	      		<form method="post" action = "/messages">
 				    {{ csrf_field() }}
 					<textarea name="message" rows="3" cols="20" placeholder = "Въведи бележка"></textarea>
 					<br>

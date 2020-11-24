@@ -5,7 +5,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Нови заявки за Каско'
 		},
 		{
 			extend: 'pdf',
@@ -13,8 +13,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Нови заявки</u> за <b><i>Каско</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -30,7 +30,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Направена оферта- Каско'
 		},
 		{
 			extend: 'pdf',
@@ -38,8 +38,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Направена оферта</u>- <b><i>Каско</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -55,7 +55,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Сключена сделка- Каско'
 		},
 		{
 			extend: 'pdf',
@@ -63,8 +63,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Сключена сделка</u>- <b><i>Каско</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -73,14 +73,14 @@ $(document).ready( function () {
 		},
 		responsive: true
 	});
-	
+
 	$('#archiveRequests').DataTable({
 		dom: 'Bfrtip',
 		buttons: [
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Архивирани- Каско'
 		},
 		{
 			extend: 'pdf',
@@ -88,8 +88,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Архивирани</u>- <b><i>Каско</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -105,6 +105,6 @@ $(document).ready( function () {
 	        // alert (target);
 	        $($.fn.dataTable.tables( true )).css('width', '100%');
 	        $($.fn.dataTable.tables( true )).DataTable().columns.adjust().draw();
-	    } ); 
+	    } );
 	});
 });

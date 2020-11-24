@@ -5,7 +5,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Неназначени заявки за Гражданска отговорност'
 		},
 		{
 			extend: 'pdf',
@@ -13,8 +13,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Неназначени заявки</u> за <b><i>Гражданска отговорност</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -30,7 +30,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Обработени заявки за Гражданска отговорност'
 		},
 		{
 			extend: 'pdf',
@@ -38,8 +38,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Обработени заявки</u> за <b><i>Гражданска отговорност</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -55,7 +55,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Завършени заявки за Гражданска отговорност'
 		},
 		{
 			extend: 'pdf',
@@ -63,8 +63,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Завършени заявки</u> за <b><i>Гражданска отговорност</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -80,7 +80,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: '<u>Архивирани заявки за Гражданска отговорност'
 		},
 		{
 			extend: 'pdf',
@@ -88,8 +88,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Архивирани заявки</u> за <b><i>Гражданска отговорност</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -105,7 +105,7 @@ $(document).ready( function () {
 		'copy',
 		{
 			extend: 'excel',
-			messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+			messageTop: 'Всички заявки за Гражданска отговорност'
 		},
 		{
 			extend: 'pdf',
@@ -113,8 +113,8 @@ $(document).ready( function () {
 		},
 		{
 			extend: 'print',
-			messageTop: function () {                   
-				return 'Печат на оригинала';
+			messageTop: function () {
+				return '<u>Всички заявки</u> за <b><i>Гражданска отговорност</i></b>(Печат на оригинала)';
 			},
 			messageBottom: null
 		}],
@@ -123,13 +123,13 @@ $(document).ready( function () {
 		},
 		responsive: true
 	});
-	
+
 	$(document).ready(function() {
 	    $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
 	        // var target = $(e.target).attr("href"); // activated tab
 	        // alert (target);
 	        $($.fn.dataTable.tables(true)).css('width', '100%');
 	        $($.fn.dataTable.tables(true)).DataTable().columns.adjust().draw();
-	    } ); 
-	});  
+	    } );
+	});
 });

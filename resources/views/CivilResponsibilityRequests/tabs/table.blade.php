@@ -9,7 +9,7 @@
             <th>Запази</th>
             <th>Бележки</th>
             <th>Дата</th>
-            
+
             <th>Телефон</th>
             <th>Адрес</th>
             <th>Талон</th>
@@ -39,12 +39,12 @@
                         <option value="Неназначени">Неназначени</option>
                         <option value="Обработени">Обработени</option>
                         @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
-                            <option value="Завършени">Завършени</option>         
+                            <option value="Завършени">Завършени</option>
                             <option value="Архивирани">Архивирани</option>
                             <option value="Всички">Всички</option>
                         @endif
                     </select>
-                </td> 
+                </td>
                 @if(Auth::user()->isSuperAdmin() || Auth::user()->isAdmin())
                 <td>
                     <select name="user_id">
@@ -55,10 +55,10 @@
                     </select>
                 </td>
                 @endif
-                <td>    
+                <td>
                     <input type="submit" value="Запази">
                 </td>
-            </form>     
+            </form>
             <td>
                 <button class="but_view" onclick="document.getElementById('id01').style.display='block'" type="button" style="width:auto;">
                     Виж
@@ -85,19 +85,17 @@
         </tr>
         @endforeach
     </tbody>
-</table> 
+</table>
 <script type="text/javascript">
     $(function () {
-        $(".but_view").click(function () { 
-            var a = $(this).parents("tr").find(".id").text(); 
-            var p = "";  
-            p +=  "<input type = 'hidden' name = 'civil_responsibility_request_id' value='" + a + "'>"; 
-            //CLEARING THE PREFILLED DATA 
-            $("#divGFG").empty(); 
-            //WRITING THE DATA ON MODEL 
-            $("#divGFG").append(p); 
-        }); 
-    }); 
-</script> 
-
-
+        $(".but_view").click(function () {
+            var a = $(this).parents("tr").find(".id").text();
+            var p = "";
+            p +=  "<input type = 'hidden' name = 'civil_responsibility_request_id' value='" + a + "'>";
+            //CLEARING THE PREFILLED DATA
+            $("#divGFG").empty();
+            //WRITING THE DATA ON MODEL
+            $("#divGFG").append(p);
+        });
+    });
+</script>

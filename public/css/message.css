@@ -21,3 +21,14 @@
 {
   color: black;
 }
+
+.buttonDestroyMessage
+{ 
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 4px;
+}

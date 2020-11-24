@@ -21,17 +21,19 @@
 	                    <form method="post" action="/tariffs" enctype="multipart/form-data">
 							@csrf
 							<span style="color: red" id="spanFile">Не сте прикачили файл!</span>
+							<span style="color: red" id="spanInsuranceCompany">Изберете застраховател!</span>
 							<br>
 
 							<input type="file" id="file" accept=".csv" name="file" required>
-							
-							<select name="insuranceCompany">
+
+							<select id="insuranceCompany" name="insuranceCompany">
+								<option value="0">Изберете застраховател</option>
 								@foreach($allInsuranceCompany as $insuranceCompany)
 	                                <option value="{{ $insuranceCompany->id }}">{{ $insuranceCompany->name }}</option>
 	                            @endforeach
 	                        </select>
-	                        
-							
+
+
 							<input id="submit" type="submit" value="Качи файл">
 						</form>
 					</div>
@@ -74,15 +76,20 @@
 		$(document).ready( function () {
 			$("#formAdd").hide();
 			$("#spanFile").hide();
+			$("#spanInsuranceCompany").hide();
 
 			$("#btn-add").click(function(){
 			   	$("#btn-add").hide();
 			   	$("#formAdd").show();
 			});
-		
+
 			$("#submit").click(function(){
 				if($("#file").val() == ''){
 					$("#spanFile").show().fadeOut(5000);
+				}
+
+				if($("#insuranceCompany").val() !== 0){
+					$("#spanInsuranceCompany").show().fadeOut(5000);
 				}
 			});
 
