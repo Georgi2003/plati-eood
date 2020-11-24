@@ -86,5 +86,6 @@
 
 <script src="{{ asset('js/img.js') }}"></script>
 <script src="{{ asset('js/CivilResponsibilityRequests/tabs.js') }}"></script>
+@include('CivilResponsibilityRequests.messages.index')
 <br>
 </x-app-layout>

@@ -69,10 +69,10 @@
   </div>
 </div>
 <script>
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-}
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+  }
 </script>
 <script src="{{ asset('js/KaskoRequests/tabs.js') }}"></script>
 <br>
