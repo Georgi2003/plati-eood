@@ -69,7 +69,10 @@
             <td>{{ $civilResponsibilityRequest->adress }}</td>
             <td>{{ $civilResponsibilityRequest->coupon_number }}</td>
             <td>
-                {{ $civilResponsibilityRequest->coupon_file }}
+                <div class="w3-container w3-third">
+                    <img src="{{ $civilResponsibilityRequest->coupon_file }}" style=""
+                    onclick="onClick(this)" class="w3-hover-opacity">
+                </div>
             </td>
             <td>{{ $civilResponsibilityRequest->registration_number }}</td>
             <td>{{ $civilResponsibilityRequest->vehicle_type }}</td>
