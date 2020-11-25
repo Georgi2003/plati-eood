@@ -19,6 +19,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/message.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/callout.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         @livewireStyles
@@ -58,4 +59,12 @@
 
         @livewireScripts
     </body>
+
+    <div class="callout">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+        <div class="callout-container">
+            <h3>Необработени поръчки</h3>
+            <p>Имате необработени поръчки от предния ден!</p>
+        </div>
+    </div>
 </html>

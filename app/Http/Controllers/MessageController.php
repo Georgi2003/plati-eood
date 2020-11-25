@@ -44,7 +44,7 @@ class MessageController extends Controller
 
         $message->save();
 
-        return redirect('/CivilResponsibilityRequests')->with('success', 'Успешно добавихте съобщение!');
+        return redirect('/CivilResponsibilityRequests')->with('success', 'Успешно добавихте бележка!');
     }
 
     /**

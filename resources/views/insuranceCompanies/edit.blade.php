@@ -11,7 +11,7 @@
                 @method('PUT')
 
                 <br>
-                Актуализирай броят параметри:
+                Актуализирай името:
                 <br>        
                 <input type="text" class="form-control" id="name" name="name" value="{{ $insuranceCompany->name }}">
 
