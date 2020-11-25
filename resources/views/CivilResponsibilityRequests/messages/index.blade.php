@@ -10,7 +10,8 @@
             <button id="addNoteButton" class="btn btn-success" style = "float: right; text-decoration: none; color: white;"><a href="#section">Добави</a></button>
             <br>
 
-            @foreach($allMessages as $message)<hr>
+            @foreach($allMessages as $message)
+                <hr>
                 {{ $loop->iteration }}. <b>{{ $message->user->name }}</b> {{ $message->created_at }}
                 <br>
                 {{$message->message }}

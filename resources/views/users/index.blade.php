@@ -85,7 +85,7 @@
                 'copy',
                 {
                     extend: 'excel',
-                    messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+                    messageTop: 'Списък на потребителите'
                 },
                 {
                     extend: 'pdf',
@@ -94,7 +94,7 @@
                 {
                 extend: 'print',
                 messageTop: function () {                   
-                    return 'Печат на оригинала';
+                    return '<b>Потребители</b>(Печат на оригинала)';
                     },
                         messageBottom: null
                     }

@@ -26,6 +26,7 @@ class InsuranceCompanieSeeder extends Seeder
             ['name' => 'Дженерали'],
             ['name' => 'Булстрад'],
             ['name' => 'Уника'],
+            ['name' => 'Даллбогг'],
         ]);
     }
 }

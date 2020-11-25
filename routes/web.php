@@ -28,6 +28,7 @@ Route::middleware([IsAdmin::class])->group(function () {
 	Route::resource('/users', 'App\Http\Controllers\UserController');
 	Route::resource('/tariffs', 'App\Http\Controllers\InsuranceCompanyPriceController');
 });
+
 Route::resource('/CivilResponsibilityRequests', 'App\Http\Controllers\CivilResponsibilityRequestController');
 
 Route::resource('/messages', 'App\Http\Controllers\MessageController');

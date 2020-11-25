@@ -17,7 +17,7 @@ class InsuranceCompanyPriceController extends Controller
     {
         $insuranceCompanyPrice = InsuranceCompanyPrice::all();
         $insuranceCompany = InsuranceCompany::all();
-        
+
         return view('tariffs.index', [
             'allInsuranceCompanyPrice' => $insuranceCompanyPrice,
             'allInsuranceCompany' => $insuranceCompany,
@@ -43,53 +43,56 @@ class InsuranceCompanyPriceController extends Controller
     public function store(Request $request)
     {
         $fileName = $_FILES['file']['tmp_name'];
-        
+
         $file = fopen($fileName, "r");
 
         $insuranceCompanyPriceData = [];
         $rowIndex = 0;
         while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
-            if($rowIndex > 0){
-                $vehicle_type = "";
-                if (isset($column[0])) {
-                    $vehicle_type = $column[0];
-                }
+            if($rowIndex > 0)
+            {
+                if (!$column[0] == 0)
+                {
+                    $vehicle_type = "";
+                    if (isset($column[0])) {
+                        $vehicle_type = $column[0];
+                    }
 
-                $kW = 0;
-                if (isset($column[1])) {
-                    $kW = $column[1];
-                }
+                    $kW = 0;
+                    if (isset($column[1])) {
+                        $kW = $column[1];
+                    }
 
-                $horse_power = 0;
-                if (isset($column[2])) {
-                    $horse_power = $column[2];
-                }
-                
-                $volume = 0;
-                if (isset($column[3])) {
-                    $volume = $column[3];
-                }
+                    $horse_power = 0;
+                    if (isset($column[2])) {
+                        $horse_power = $column[2];
+                    }
 
-                $registration_number = "";
-                if (isset($column[4])) {
-                    $registration_number = $column[4];
-                }
+                    $volume = 0;
+                    if (isset($column[3])) {
+                        $volume = $column[3];
+                    }
 
-                $year_production = 0;
-                if (isset($column[5])) {
-                    $year_production = $column[5];
-                }
+                    $registration_number = "";
+                    if (isset($column[4])) {
+                        $registration_number = $column[4];
+                    }
 
-                $payments_count = 0;
-                if (isset($column[6])) {
-                    $payments_count = $column[6];
-                }
+                    $year_production = 0;
+                    if (isset($column[5])) {
+                        $year_production = $column[5];
+                    }
 
-                $price = 0;
-                if (isset($column[7])) {
-                    $price = $column[7];
-                }
+                    $payments_count = 0;
+                    if (isset($column[6])) {
+                        $payments_count = $column[6];
+                    }
 
+                    $price = 0;
+                    if (isset($column[7])) {
+                        $price = $column[7];
+                    }
+                }
                 $insuranceCompanyPriceData[] = [
                     'vehicle_type' => $vehicle_type,
                     'kW' => $kW,
@@ -101,7 +104,7 @@ class InsuranceCompanyPriceController extends Controller
                     'price' => $price,
                     'insurance_company_id' => $request['insuranceCompany']
                 ];
-                
+
             }
             $rowIndex++;
         }
