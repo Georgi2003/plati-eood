@@ -19,23 +19,17 @@ class CivilResponsibilityRequestController extends Controller
      */
     public function index()
     {
-        $CivilResponsibilityRequests = CivilResponsibilityRequest::with(['messages', 'messages.user'])->get();
+      //  $CivilResponsibilityRequests = CivilResponsibilityRequest::with(['messages', 'messages.user'])->get();
         $unassigned = CivilResponsibilityRequest::getUnassignedRequestsByUser();
         $processed = CivilResponsibilityRequest::getProcessedRequestsByUser();
         $completed = CivilResponsibilityRequest::getCompletedRequestsByUser();
         $archived = CivilResponsibilityRequest::getArchivedRequestsByUser();
-        $allRequests = CivilResponsibilityRequest::all();
+        $allRequests = CivilResponsibilityRequest::with(['messages', 'messages.user'])->get();
         $users = User::all();
-        $messages = Message::all();
-        // dd($unassigned[0]->messages[0]->message);
-        // foreach($CivilResponsibilityRequests as $unassigned){
-        //     foreach($unassigned->messages as $messages){
-        //         dd($messages->id);
-        //     }
-        // }
+        // $messages = Message::all();
 
         return view('CivilResponsibilityRequests.index', [
-            'allCivilResponsibilityRequests' => $CivilResponsibilityRequests,
+          //  'allCivilResponsibilityRequests' => $CivilResponsibilityRequests,
             'unassigned' => $unassigned,
             'processed' => $processed,
             'completed' => $completed,
@@ -43,7 +37,7 @@ class CivilResponsibilityRequestController extends Controller
             'allRequests' => $allRequests,
 
             'allUsers' => $users,
-            'allMessages' => $messages,
+            //'allMessages' => $messages,
         ]);
     }
 

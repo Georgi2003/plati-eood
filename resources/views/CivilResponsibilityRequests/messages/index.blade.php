@@ -1,55 +1,50 @@
-<link rel="stylesheet" href="{{ asset('css/notes.css') }}">
+<div class="modal fade" id="messagesModal" tabindex="-1" role="dialog" aria-labelledby="messagesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messagesModalLabel">Бележки</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-<div id="id01" class="modal">
-    <div class="modal-content animate" style="text-align: center;">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Затвори">&times;</span>
-        <img src="{{ asset('img/avatar.jpg') }}" width="45" height="50">
-        <h3>Бележки</h3>
-
-        <div id="modalContainer" class="container">
-            <button id="addNoteButton" class="btn btn-success" style = "float: right; text-decoration: none; color: white;"><a href="#section">Добави</a></button>
-            <br>
-
-            @foreach($allMessages as $message)
-                <hr>
-                {{ $loop->iteration }}. <b>{{ $message->user->name }}</b> {{ $message->created_at }}
+            <div class="modal-body">
+                <button id="addNoteButton" class="btn btn-success" style = "float: right; text-decoration: none; color: white;"><a href="#section">Добави</a></button>
                 <br>
-                {{$message->message }}
+                <p>
+                    <strong> Съобщения: </strong> <span class="messages"></span>
+                </p>
+            </div>
 
-                @if($message->user_id == Auth::user()->id)
-                    <form method="post" action="{{ url('messages') }}/{{ $message->id }}">
-                        @csrf
-                        @method('DELETE')
-                        <button class="buttonDestroyMessage" style = "float: right;text-decoration: none; color: black;">
-                            Изтрий
-                        </button>
-                    </form>
-                @endif
-                <br>
-            @endforeach
-        </div>
+            <div class="main" id="section">
+            <!-- create -->
+                <div style="text-align: center; background-color:#f1f1f1">
+                    <button id="closeNote" type="button" style = "float: right; padding: 8px; margin: 8px;" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
 
-        <div class="main" id="section">
-        <!-- create -->
-            <div style="background-color:#f1f1f1">
-                <button class="container" id="note" type="button" title="Отвори" class="psw">Въведи бележка</button>
-                <button id="closeNote" type="button" title="Затвори">Затвори</button>
-                <div id="addNote">
-                    <form method="post" action = "/messages">
-                        {{ csrf_field() }}
-                        <textarea name="message" rows="3" cols="20" placeholder = "Въведи бележка"></textarea>
-                        <br>
-                        <div class="GFGclass" id="divGFG"></div>
+                    <div id="addNote">
+                        Добави бележка
+                        <form method="post" action = "/messages">
+                            {{ csrf_field() }}
+                            <textarea name="message" rows="3" cols="20" placeholder = "Въведи бележка"></textarea>
+                            <br>
+                            <div class="GFGclass" id="divGFG"></div>
 
-                        <input type = "submit" name = "submit" value="Запази">
-                    </form>
+                            <input type = "submit" name = "submit" value="Запази">
+                        </form>
+                    </div>
                 </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
             </div>
         </div>
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
         $("#user_id").hide();
         $("#addNote").hide();
@@ -57,13 +52,6 @@
 
         $("#addNoteButton").click(function(){
             $("#addNote").show();
-            $("#note").hide();
-            $("#closeNote").show();
-        });
-
-        $("#note").click(function(){
-            $("#addNote").show();
-            $("#note").hide();
             $("#closeNote").show();
         });
 
@@ -76,5 +64,26 @@
         $(".but_view").click(function(){
             $('#id01').show();
         });
+    });
+
+    $('#messagesModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+
+        //Fetch modal data from html modal button
+        var requestId = button.data('id')
+        var messages = button.data('messages')
+
+        //Fill out the data in modal
+        var modal = $(this)
+
+        var messagesString = '';
+        for (var i = 0; i < messages.length; i++) {
+            var datetime = new Date(messages[i].created_at);
+
+            var datestring = datetime.getDate()  + "." + (datetime.getMonth()+1) + "." + datetime.getFullYear() + " " + datetime.getHours() + ":" + datetime.getMinutes();
+            messagesString += messages[i].user.name + ' ' + datestring + ' ' + messages[i].message + '\n';
+        }
+          // modal.find('.id').text(id)
+        modal.find('.messages').text(messagesString)
     });
 </script>

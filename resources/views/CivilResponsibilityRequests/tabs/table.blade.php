@@ -60,9 +60,7 @@
                 </td>
             </form>
             <td>
-                <button class="but_view" onclick="document.getElementById('id01').style.display='block'" type="button" style="width:auto;">
-                    Виж
-                </button>
+                <button type="button" class="but_view" data-toggle="modal" data-target="#messagesModal" data-id="{{$civilResponsibilityRequest->id}}" data-messages="{{$civilResponsibilityRequest->messages}}">Съобщения</button>
             </td>
             <td>{{ $civilResponsibilityRequest->created_at }}</td>
             <td>{{ $civilResponsibilityRequest->phone }}</td>
